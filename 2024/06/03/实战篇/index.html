@@ -1,0 +1,1003 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Springboot后端实战篇 | 青玉案</title><meta name="author" content="顾"><meta name="copyright" content="顾"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Springboot后端实战篇 注册  引入Spring Validation依赖 &lt;dependency&gt;    &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;    &lt;artifactId&gt;spring-boot-starter-validation&lt;&#x2F;artifactId&gt;&lt;&#x2F;depen">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Springboot后端实战篇">
+<meta property="og:url" content="http://qian421.github.io/2024/06/03/%E5%AE%9E%E6%88%98%E7%AF%87/index.html">
+<meta property="og:site_name" content="青玉案">
+<meta property="og:description" content="Springboot后端实战篇 注册  引入Spring Validation依赖 &lt;dependency&gt;    &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;    &lt;artifactId&gt;spring-boot-starter-validation&lt;&#x2F;artifactId&gt;&lt;&#x2F;depen">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img1.baidu.com/it/u=1072047511,491707061&fm=253&fmt=auto&app=138&f=JPEG?w=1422&h=800">
+<meta property="article:published_time" content="2024-06-03T00:54:10.000Z">
+<meta property="article:modified_time" content="2024-07-20T05:54:54.870Z">
+<meta property="article:author" content="顾">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img1.baidu.com/it/u=1072047511,491707061&fm=253&fmt=auto&app=138&f=JPEG?w=1422&h=800"><link rel="shortcut icon" href="/img/faicon.png"><link rel="canonical" href="http://qian421.github.io/2024/06/03/%E5%AE%9E%E6%88%98%E7%AF%87/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Springboot后端实战篇',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-07-20 13:54:54'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.2.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://img1.baidu.com/it/u=1072047511,491707061&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=1422&amp;h=800')"><nav id="nav"><span id="blog-info"><a href="/" title="青玉案"><img class="site-icon" src="https://img1.baidu.com/it/u=2692544357,303557332&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=PNG?w=200&amp;h=197"/><span class="site-name">青玉案</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Springboot后端实战篇</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-06-03T00:54:10.000Z" title="发表于 2024-06-03 08:54:10">2024-06-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-07-20T05:54:54.870Z" title="更新于 2024-07-20 13:54:54">2024-07-20</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Springboot后端实战篇"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><div class="top-img gist" style="background-image: url(https://img1.baidu.com/it/u=1072047511,491707061&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=1422&amp;h=800)"></div><article class="post-content" id="article-container"><h1>Springboot后端实战篇</h1>
+<h2 id="注册">注册</h2>
+<p><img src="D:%5CUsers%5C30638%5CTypora%5C%E5%9B%BE%E7%89%87%5Cimage-20240614223823594.png" alt="image-20240614223823594"></p>
+<h3 id="引入Spring-Validation依赖">引入Spring Validation依赖</h3>
+<figure class="highlight xml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-validation<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="导入Md5Util工具类">导入Md5Util工具类</h3>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zjf.utils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.security.MessageDigest;</span><br><span class="line"><span class="keyword">import</span> java.security.NoSuchAlgorithmException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Md5Util</span> {</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 默认的密码字符串组合，用来将字节转换成 16 进制表示的字符,apache校验下载的文件的正确性用的就是默认的这个组合</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">static</span> <span class="type">char</span> hexDigits[] = {<span class="string">'0'</span>, <span class="string">'1'</span>, <span class="string">'2'</span>, <span class="string">'3'</span>, <span class="string">'4'</span>, <span class="string">'5'</span>, <span class="string">'6'</span>, <span class="string">'7'</span>, <span class="string">'8'</span>, <span class="string">'9'</span>, <span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>, <span class="string">'e'</span>, <span class="string">'f'</span>};</span><br><span class="line"></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">static</span> <span class="type">MessageDigest</span> <span class="variable">messagedigest</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> {</span><br><span class="line">        <span class="keyword">try</span> {</span><br><span class="line">            messagedigest = MessageDigest.getInstance(<span class="string">"MD5"</span>);</span><br><span class="line">        } <span class="keyword">catch</span> (NoSuchAlgorithmException nsaex) {</span><br><span class="line">            System.err.println(Md5Util.class.getName() + <span class="string">"初始化失败，MessageDigest不支持MD5Util。"</span>);</span><br><span class="line">            nsaex.printStackTrace();</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 生成字符串的md5校验值</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> s</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">getMD5String</span><span class="params">(String s)</span> {</span><br><span class="line">        <span class="keyword">return</span> getMD5String(s.getBytes());</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 判断字符串的md5校验码是否与一个已知的md5码相匹配</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> password  要校验的字符串</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> md5PwdStr 已知的md5校验码</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">boolean</span> <span class="title function_">checkPassword</span><span class="params">(String password, String md5PwdStr)</span> {</span><br><span class="line">        <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> getMD5String(password);</span><br><span class="line">        <span class="keyword">return</span> s.equals(md5PwdStr);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">getMD5String</span><span class="params">(<span class="type">byte</span>[] bytes)</span> {</span><br><span class="line">        messagedigest.update(bytes);</span><br><span class="line">        <span class="keyword">return</span> bufferToHex(messagedigest.digest());</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String <span class="title function_">bufferToHex</span><span class="params">(<span class="type">byte</span> bytes[])</span> {</span><br><span class="line">        <span class="keyword">return</span> bufferToHex(bytes, <span class="number">0</span>, bytes.length);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> String <span class="title function_">bufferToHex</span><span class="params">(<span class="type">byte</span> bytes[], <span class="type">int</span> m, <span class="type">int</span> n)</span> {</span><br><span class="line">        <span class="type">StringBuffer</span> <span class="variable">stringbuffer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuffer</span>(<span class="number">2</span> * n);</span><br><span class="line">        <span class="type">int</span> <span class="variable">k</span> <span class="operator">=</span> m + n;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">l</span> <span class="operator">=</span> m; l &lt; k; l++) {</span><br><span class="line">            appendHexPair(bytes[l], stringbuffer);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> stringbuffer.toString();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">appendHexPair</span><span class="params">(<span class="type">byte</span> bt, StringBuffer stringbuffer)</span> {</span><br><span class="line">        <span class="type">char</span> <span class="variable">c0</span> <span class="operator">=</span> hexDigits[(bt &amp; <span class="number">0xf0</span>) &gt;&gt; <span class="number">4</span>];<span class="comment">// 取字节中高 4 位的数字转换, &gt;&gt;&gt;</span></span><br><span class="line">        <span class="comment">// 为逻辑右移，将符号位一起右移,此处未发现两种符号有何不同</span></span><br><span class="line">        <span class="type">char</span> <span class="variable">c1</span> <span class="operator">=</span> hexDigits[bt &amp; <span class="number">0xf</span>];<span class="comment">// 取字节中低 4 位的数字转换</span></span><br><span class="line">        stringbuffer.append(c0);</span><br><span class="line">        stringbuffer.append(c1);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="三层架构">三层架构</h3>
+<p><strong>UserController</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zjf.controller;</span><br><span class="line"><span class="comment">// 导入必要的包</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Validated</span><span class="comment">// @Validated: 这个注解表示这个控制器中的方法参数将会进行校验。</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping("/user")</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserController</span> {</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    UserService userservice;</span><br><span class="line">     <span class="comment">// @Pattern: 这个注解用于校验方法参数是否符合正则表达式的规则。正则表达式"^\S{5,16}$"，用户名和密码的长度为5~16位非空字符</span></span><br><span class="line">    <span class="meta">@PostMapping("/register")</span>   </span><br><span class="line">    <span class="keyword">public</span> Result <span class="title function_">register</span><span class="params">(<span class="meta">@Pattern(regexp = "^\\S{5,16}$")</span> String username, <span class="meta">@Pattern(regexp = "^\\S{5,16}$")</span> String password)</span> {</span><br><span class="line">      <span class="keyword">if</span> (userService.findByUserName(username) != <span class="literal">null</span>) {</span><br><span class="line">        <span class="comment">// 如果用户名已存在，返回错误信息</span></span><br><span class="line">        <span class="keyword">return</span> Result.error(<span class="string">"用户名已存在"</span>);</span><br><span class="line">    } <span class="keyword">else</span> {</span><br><span class="line">        <span class="comment">// 如果用户名不存在，调用userService的register方法注册新用户</span></span><br><span class="line">        userService.register(username, password);</span><br><span class="line">        <span class="comment">// 注册成功，返回成功信息</span></span><br><span class="line">        <span class="keyword">return</span> Result.success();</span><br><span class="line">  	  }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>UserServiceImpl</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zjf.service.impl;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.zjf.utils.Md5Util;</span><br><span class="line"><span class="comment">// 导入必要的包</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserServiceImpl</span> <span class="keyword">implements</span> <span class="title class_">UserService</span> {</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    UserMapper userMapper;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">register</span><span class="params">(String username, String password)</span> {</span><br><span class="line">        <span class="comment">//// 使用Md5Util工具类对密码进行MD5加密</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">md5String</span> <span class="operator">=</span> Md5Util.getMD5String(password);</span><br><span class="line">        userMapper.insertUser(username,md5String);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> User <span class="title function_">findByUserName</span><span class="params">(String username)</span> {</span><br><span class="line">        <span class="keyword">return</span> userMapper.findByUserName(username);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>UserMappper</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zjf.mapper;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserMapper</span> {</span><br><span class="line">    <span class="meta">@Insert("insert into user(username,password,create_time,update_time)" +</span></span><br><span class="line"><span class="meta">            " values(#{username},#{password},now(),now())")</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">insertUser</span><span class="params">(String username, String password)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Select("select * from user where username=#{username}")</span></span><br><span class="line">    User <span class="title function_">findByUserName</span><span class="params">(String username)</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="知识要点">知识要点</h3>
+<h4 id="Md5加密">Md5加密</h4>
+<ol>
+<li>
+<p>导入Md5Utils工具类</p>
+</li>
+<li>
+<p>将输入的密码使用Md5Util类进行MD5加密生成md5String</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">   <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">register</span><span class="params">(String username, String password)</span> {</span><br><span class="line">       <span class="comment">//加密</span></span><br><span class="line">       <span class="type">String</span> <span class="variable">md5String</span> <span class="operator">=</span> Md5Util.getMD5String(password);</span><br><span class="line">       userMapper.insertUser(username,md5String);</span><br><span class="line">   }</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<hr>
+<h4 id="参数校验">参数校验</h4>
+<p>使用 Spring Validation, 对注册接口的参数进行合法性校验</p>
+<ol>
+<li>
+<p>引入 Spring Validation 起步依赖</p>
+<figure class="highlight xml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-validation<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>在参数前面添加 @Pattern 注解</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line">register(<span class="meta">@Pattern(regexp = "^\\S{5,16}$")</span> String username, <span class="meta">@Pattern(regexp = "^\\S{5,16}$")</span> String password) </span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>在 Controller 类上添加 @Validated 注解</p>
+</li>
+<li>
+<p>在全局异常处理器中处理参数校验失败的异常</p>
+<p>​	当用户名和密码的长度不满足5~16位非空字符时，参数校验失败，服务器抛出错误，“status”: 500, “error”: “Internal Server Error”,表示服务器遇到了一个内部错误。此时提供一个全局的异常处理机制。当应用程序中的任何控制器方法抛出异常时，<code>handleException</code> 方法会被调用。它会打印异常的堆栈跟踪信息，并返回一个包含错误信息的 <code>Result</code> 对象给客户端。这种方式有助于统一异常处理逻辑，提高代码的可维护性。</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zjf.exception;</span><br><span class="line"><span class="comment">//导入必要的包</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// @RestControllerAdvice: 这是一个Spring框架的注解，用于标记一个类作为全局的异常处理类。</span></span><br><span class="line"><span class="comment">// 这个类会处理所有控制器（@Controller或@RestController）中抛出的异常，并将异常处理结果以JSON或其他序列化形式返回给客户端。</span></span><br><span class="line"><span class="meta">@RestControllerAdvice</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">GlobalExceptionHandler</span> {</span><br><span class="line"><span class="comment">// @ExceptionHandler(Exception.class): 这个方法级别的注解用于指定这个方法将会处理Exception.class类型的异常。</span></span><br><span class="line">    <span class="comment">// 在这里，它指定了这个方法将处理所有的异常，因为Exception是所有异常类的基类。</span></span><br><span class="line">    <span class="meta">@ExceptionHandler(Exception.class)</span></span><br><span class="line">    <span class="keyword">public</span> Result <span class="title function_">handleException</span><span class="params">(Exception e)</span>{</span><br><span class="line">        e.printStackTrace();   <span class="comment">// 打印异常的堆栈跟踪信息到控制台，这通常用于开发过程中的调试。</span></span><br><span class="line">        <span class="keyword">return</span> Result.error(StringUtils.hasLength(e.getMessage())? e.getMessage() : <span class="string">"操作失败"</span>);</span><br><span class="line">          <span class="comment">// 使用StringUtils.hasLength(e.getMessage())来检查异常是否有消息内容，如果有，则将异常消息作为错误信息返回。</span></span><br><span class="line">        <span class="comment">// 如果没有，则返回一个默认的字符串"操作失败"。</span></span><br><span class="line">        <span class="comment">// 这里的Result是一个自定义的响应实体类，它包含了处理异常后的结果。</span></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<hr>
+<h2 id="登录">登录</h2>
+<p><img src="../%E5%9B%BE%E7%89%87/image-20240615090941613.png" alt="image-20240615090941613"></p>
+<h3 id="引入jwt依赖">引入jwt依赖</h3>
+<figure class="highlight xml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.auth0<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>java-jwt<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.4.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="导入工具类jwtUtil">导入工具类jwtUtil</h3>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zjf.utils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.auth0.jwt.JWT;</span><br><span class="line"><span class="keyword">import</span> com.auth0.jwt.algorithms.Algorithm;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JwtUtil</span> {</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">KEY</span> <span class="operator">=</span> <span class="string">"itheima"</span>;</span><br><span class="line">   </span><br><span class="line">   <span class="comment">//接收业务数据,生成token并返回</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">genToken</span><span class="params">(Map&lt;String, Object&gt; claims)</span> {</span><br><span class="line">        <span class="keyword">return</span> JWT.create()</span><br><span class="line">                .withClaim(<span class="string">"claims"</span>, claims)</span><br><span class="line">                .withExpiresAt(<span class="keyword">new</span> <span class="title class_">Date</span>(System.currentTimeMillis() + <span class="number">1000</span> * <span class="number">60</span> * <span class="number">60</span> ))</span><br><span class="line">                .sign(Algorithm.HMAC256(KEY));</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">   <span class="comment">//接收token,验证token,并返回业务数据</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Map&lt;String, Object&gt; <span class="title function_">parseToken</span><span class="params">(String token)</span> {</span><br><span class="line">        <span class="keyword">return</span> JWT.require(Algorithm.HMAC256(KEY))</span><br><span class="line">                .build()</span><br><span class="line">                .verify(token)</span><br><span class="line">                .getClaim(<span class="string">"claims"</span>)</span><br><span class="line">                .asMap();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="编写UserController">编写UserController</h3>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@PostMapping("/login")</span></span><br><span class="line"><span class="keyword">public</span> Result <span class="title function_">login</span><span class="params">(</span></span><br><span class="line"><span class="params">    <span class="meta">@Pattern(regexp = "^\\S{5,16}$")</span> String username, </span></span><br><span class="line"><span class="params">    <span class="meta">@Pattern(regexp = "^\\S{5,6}$")</span> String password)</span> {</span><br><span class="line">    <span class="comment">// 根据用户名查询用户信息</span></span><br><span class="line">    <span class="type">User</span> <span class="variable">loginUser</span> <span class="operator">=</span> userService.findByUserName(username);</span><br><span class="line">    <span class="comment">// 判断该用户是否存在</span></span><br><span class="line">    <span class="keyword">if</span> (loginUser == <span class="literal">null</span>) {</span><br><span class="line">        <span class="comment">// 如果用户不存在，返回错误信息</span></span><br><span class="line">        <span class="keyword">return</span> Result.error(<span class="string">"用户名错误"</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 判断密码是否正确，loginUser对象中的password是密文</span></span><br><span class="line">    <span class="keyword">if</span> (Md5Util.getMD5String(password).equals(loginUser.getPassword())) {</span><br><span class="line">        <span class="comment">// 如果密码正确，登录成功</span></span><br><span class="line">        <span class="comment">// 创建一个包含用户ID和用户名的声明映射</span></span><br><span class="line">        Map&lt;String, Object&gt; claims = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        claims.put(<span class="string">"id"</span>, loginUser.getId());</span><br><span class="line">        claims.put(<span class="string">"username"</span>, loginUser.getUsername());</span><br><span class="line">        <span class="comment">// 使用JwtUtil工具类生成一个JWT令牌，将声明映射作为载荷</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">token</span> <span class="operator">=</span> JwtUtil.genToken(claims);</span><br><span class="line">        <span class="comment">// 返回成功结果，包含生成的JWT令牌</span></span><br><span class="line">        <span class="keyword">return</span> Result.success(token);</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">// 如果密码错误，返回错误信息</span></span><br><span class="line">    <span class="keyword">return</span> Result.error(<span class="string">"密码错误"</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="登录拦截器">登录拦截器</h3>
+<h4 id="LoginInterceptor">LoginInterceptor</h4>
+<p><code>LoginInterceptor</code>是一个用于验证用户是否登录的拦截器。它通过检查HTTP请求中的JWT来验证用户的身份，如果JWT有效，则允许请求继续；如果JWT无效，则拒绝请求。</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zjf.interceptors;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LoginInterceptor</span> <span class="keyword">implements</span> <span class="title class_">HandlerInterceptor</span>{</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span> <span class="keyword">throws</span> Exception {</span><br><span class="line">        <span class="type">String</span> <span class="variable">token</span> <span class="operator">=</span> request.getHeader(<span class="string">"Authorization"</span>);</span><br><span class="line">        <span class="keyword">try</span> {</span><br><span class="line">            Map&lt;String, Object&gt; claims = JwtUtil.parseToken(token);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>; <span class="comment">// 如果令牌验证成功，返回true，继续执行后续的请求处理</span></span><br><span class="line">        } <span class="keyword">catch</span> (Exception e) {</span><br><span class="line">             <span class="comment">// 如果解析令牌时出现异常，说明令牌可能无效或过期</span></span><br><span class="line">            <span class="comment">// 设置响应状态码为401，</span></span><br><span class="line">            response.setStatus(<span class="number">401</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="WebConfig">WebConfig</h4>
+<p>WebConfig是一个配置类，用于注册一个登录拦截器（LoginInterceptor）。通过实现Spring MVC的WebMvcConfigurer接口，并重写addInterceptors方法，将登录拦截器添加到拦截器注册表中。在拦截器的配置中，指定了不拦截登录接口和注册接口的路径，即对路径为/user/login和/user/register的请求不进行拦截</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zjf.config;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.zjf.interceptors.LoginInterceptor;</span><br><span class="line"><span class="keyword">import</span> com.zjf.interceptors.LoginInterceptor;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.config.annotation.InterceptorRegistry;</span><br><span class="line"><span class="keyword">import</span> org.springframework.web.servlet.config.annotation.WebMvcConfigurer;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WebConfig</span> <span class="keyword">implements</span> <span class="title class_">WebMvcConfigurer</span> {</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> LoginInterceptor loginInterceptor;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">addInterceptors</span><span class="params">(InterceptorRegistry registry)</span> {</span><br><span class="line">        <span class="comment">//登录接口和注册接口不拦截</span></span><br><span class="line">        registry.addInterceptor(loginInterceptor).excludePathPatterns(<span class="string">"/user/login"</span>,<span class="string">"/user/register"</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="知识要点-2">知识要点</h3>
+<h4 id="JWT"><strong>JWT</strong></h4>
+<p>JSON Web Token（JWT）是一种开放标准（RFC 7519），用于在各方之间安全地传输信息作为 JSON 对象。JWT 可以通过数字签名进行验证，因此是一种非常安全的方式，通常用于在身份验证（Authentication）和信息交换（Information Exchange）方面。</p>
+<p><strong>JWT 结构</strong></p>
+<p>JWT 由三部分组成，通过点（.）分隔：</p>
+<p><img src="../%E5%9B%BE%E7%89%87/image-20240615112525158.png" alt="image-20240615112525158"></p>
+<ol>
+<li><strong>Header（头部）</strong>: 包含了令牌的元数据信息，例如算法（HS256、RS256、HMAC256）、令牌类型（JWT）等。</li>
+<li><strong>Payload（负载）</strong>: 包含了被加密的数据，例如用户的身份信息或其他声明。</li>
+<li><strong>Signature（签名）</strong>: 使用头部指定的算法和密钥对头部和负载进行签名，确保数据的完整性和认证。</li>
+</ol>
+<p>这三部分通过Base64 URL编码后连接在一起，形成最终的JWT令牌。</p>
+<p><strong>JWT 使用</strong></p>
+<p>JWT 的主要使用场景是在客户端和服务器之间安全地传递信息，特别是在身份验证过程中。一般的流程如下：</p>
+<ol>
+<li>
+<p><strong>认证流程</strong>:</p>
+<ul>
+<li>用户向服务器提供用户名和密码进行身份验证。</li>
+<li>服务器验证用户的身份，并生成包含用户信息的JWT。</li>
+<li>服务器将生成的JWT返回给客户端。</li>
+</ul>
+</li>
+<li>
+<p><strong>请求认证</strong>:</p>
+<ul>
+<li>
+<p>客户端在以后的请求中将JWT放置在请求头部的Authorization字段中，通常格式为 <code>Authorization: Bearer &lt;token&gt;</code>。</p>
+</li>
+<li>
+<p>服务器接收到请求后，解析JWT并验证签名的有效性。</p>
+</li>
+<li>
+<p>如果验证成功，服务器处理请求；如果验证失败或者JWT过期，服务器拒绝请求。</p>
+<hr>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="拦截器"><strong>拦截器</strong></h4>
+<p>拦截器（Interceptor）是一种动态拦截方法调用的机制，在SpringMVC中动态拦截控制器方法的执行，是java中<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=AOP&amp;spm=1001.2101.3001.7020">AOP</a>思想的运用。</p>
+<ol>
+<li><strong>创建拦截器</strong></li>
+</ol>
+<p>在Spring框架中，拦截器是通过实现<code>HandlerInterceptor</code>接口来创建的。这个接口定义了三个方法，分别对应请求处理的不同阶段：</p>
+<ul>
+<li>
+<p><code>preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)</code>：这个方法在请求实际处理之前被调用。在这个方法中，可以执行一些前置处理，如身份验证、权限检查等。如果这个方法返回<code>true</code>，则请求会继续执行；如果返回<code>false</code>，则请求将被终止。</p>
+</li>
+<li>
+<p><code>postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)</code>：这个方法在请求实际处理之后，但在视图渲染之前被调用。在这个方法中，可以对模型的属性进行修改，或者添加额外的模型数据。</p>
+</li>
+<li>
+<p><code>afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)</code>：这个方法在整个请求完成后被调用，即在视图渲染之后。在这个方法中，可以执行一些清理工作，如释放资源、记录日志等。</p>
+</li>
+</ul>
+<ol start="2">
+<li>
+<p><strong>配置拦截器</strong></p>
+<p>创建一个配置类，实现<code>WebMvcConfigurer</code>接口，并重写<code>addInterceptors</code>方法。在这个方法中，你可以使用<code>InterceptorRegistry</code>来注册你的拦截器，并指定拦截器应该作用的路径或者排除的路径。</p>
+</li>
+<li>
+<p><strong>注册拦截器</strong></p>
+<p>在<code>addInterceptors</code>方法中，使用<code>InterceptorRegistry</code>的<code>addInterceptor</code>方法来注册你的拦截器。然后，你可以使用<code>addPathPatterns</code>来指定拦截器应该拦截哪些路径，或者使用<code>excludePathPatterns</code>来指定拦截器不应该拦截哪些路径。</p>
+</li>
+</ol>
+<h2 id="获取用户详细信息">获取用户详细信息</h2>
+<p><img src="../%E5%9B%BE%E7%89%87/image-20240617151915415.png" alt="image-20240617151915415"></p>
+<h3 id="编写UserController-2">编写UserController</h3>
+<p>注意：/userInfo接口不携带参数username，token令牌中存放了用户的id和usern，通过携带token令牌，获取username。<code>@RequestHeader</code>注解用于将请求头中的信息绑定到控制器方法参数上。当你在方法参数前面加上<code>@RequestHeader</code>注解，并指定<code>name</code>属性时，Spring会自动将请求中名为<code>Authorization</code>的头部的值赋给该参数。当HTTP请求到达服务器并调用这个方法时，Spring会查找请求头中名为<code>Authorization</code>的字段，并将其值作为字符串参数<code>authorizationHeader</code>传递给方法。</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@GetMapping("/userInfo")</span></span><br><span class="line"><span class="keyword">public</span> Result&lt;User&gt; <span class="title function_">userInfo</span><span class="params">(<span class="meta">@RequestHeader(name = "Authorization")</span> String token)</span>{</span><br><span class="line">    <span class="comment">// 使用JwtUtil工具类来解析传递的JWT字符串，获取其中的负载（Payload）</span></span><br><span class="line">    Map&lt;String, Object&gt; map = JwtUtil.parseToken(token);</span><br><span class="line">    <span class="comment">// 从解析出来的负载中获取用户的用户名</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">username</span> <span class="operator">=</span>(String) map.get(<span class="string">"username"</span>);</span><br><span class="line">    <span class="comment">// 使用userService的findByUserName方法根据用户名查询用户的信息</span></span><br><span class="line">    <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> userService.findByUserName(username);</span><br><span class="line">    <span class="comment">// 如果查询到用户，则将用户信息封装在Result对象中返回，表示请求成功</span></span><br><span class="line">    <span class="keyword">return</span> Result.success(user);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>测试结果</strong></p>
+<p><img src="../%E5%9B%BE%E7%89%87/image-20240617154357256.png" alt="image-20240617154357256"></p>
+<p>​	在测试结果中，用户的密码password同样也响应给客户端。密码通常是敏感信息，不应该在网络请求的响应中返回给客户端。这可能导致用户隐私泄露的问题。在设计和实现时，应实现将密码等敏感信息从序列化的过程中排除出去。</p>
+<p>​	<code>@JsonIgnore</code>是Jackson库中的一个注解，它用于在将Java对象序列化为JSON格式时忽略特定的属性。当你想要隐藏某些敏感信息或不希望这些信息被客户端看到时，比如密码、加密密钥等。在Java类的某个字段或方法上添加<code>@JsonIgnore</code>注解，Jackson在序列化过程中就会跳过这个字段或方法，不会将其包含在生成的JSON中。</p>
+<p>​	在本例中User类的password字段上加上**@JsonIgnore**，实现在被序列化成 JSON 时，<code>password</code> 字段将会被忽略，不会出现在生成的 JSON 中。</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@JsonIgnore</span></span><br><span class="line"><span class="keyword">private</span> String password;<span class="comment">//密码</span></span><br></pre></td></tr></tbody></table></figure>
+<p><strong>测试结果</strong></p>
+<p><img src="../%E5%9B%BE%E7%89%87/image-20240617155435964.png" alt="image-20240617155435964"></p>
+<h3 id="ThreadLocal">ThreadLocal</h3>
+<p><code>ThreadLocal</code>，即线程本地变量，提供线程局部变量。如果你创建了一个<code>ThreadLocal</code>变量，那么访问这个变量的每个线程都会有这个变量的一个本地拷贝，多个线程操作这个变量的时候，实际是在操作自己本地内存里面的变量，从而起到<strong>线程隔离</strong>的作用，避免了并发场景下的<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98&amp;spm=1001.2101.3001.7020">线程安全问题</a>。</p>
+<ul>
+<li>用来存取数据 : set()/get()</li>
+<li>使用 ThreadLocal 存储的数据 , 线程安全</li>
+<li>用完记得调用 remove 方法释放</li>
+</ul>
+<p><img src="../%E5%9B%BE%E7%89%87/image-20240617160823649.png" alt="image-20240617160823649"></p>
+<p>​	在之前的代码中，我们使用**@RequestHeader**注解获取请求头中名为<code>Authorization</code>的头部的值，并使用JwtUtil工具类来解析token，获取其中的username。如果存在多个这样的接口，相应的会重复编写这串代码。通过拦截器中通一的解析token实现代码的复用</p>
+<p><strong>导入ThreadLocal 工具类</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zjf.utils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * ThreadLocal 工具类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@SuppressWarnings("all")</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ThreadLocalUtil</span> {</span><br><span class="line">    <span class="comment">//提供ThreadLocal对象,</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">ThreadLocal</span> <span class="variable">THREAD_LOCAL</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ThreadLocal</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//根据键获取值</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; T <span class="title function_">get</span><span class="params">()</span>{</span><br><span class="line">        <span class="keyword">return</span> (T) THREAD_LOCAL.get();</span><br><span class="line">    }</span><br><span class="line">   </span><br><span class="line">    <span class="comment">//存储键值对</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">set</span><span class="params">(Object value)</span>{</span><br><span class="line">        THREAD_LOCAL.set(value);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//清除ThreadLocal 防止内存泄漏</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">remove</span><span class="params">()</span>{</span><br><span class="line">        THREAD_LOCAL.remove();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>在登录拦截器中实现线程局部变量</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LoginInterceptor</span> <span class="keyword">implements</span> <span class="title class_">HandlerInterceptor</span>{</span><br><span class="line">    <span class="comment">// preHandle方法在请求处理之前调用（即在Controller方法之前）</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span> <span class="keyword">throws</span> Exception {</span><br><span class="line">        <span class="type">String</span> <span class="variable">token</span> <span class="operator">=</span> request.getHeader(<span class="string">"Authorization"</span>);</span><br><span class="line">        <span class="keyword">try</span> {</span><br><span class="line">            <span class="comment">// 使用JwtUtil工具类解析令牌，获取其中的负载</span></span><br><span class="line">            Map&lt;String, Object&gt; claims = JwtUtil.parseToken(token);</span><br><span class="line">            <span class="comment">// 将解析出的负载存储到线程局部变量中，以便在后续的请求处理中可以使用</span></span><br><span class="line">            ThreadLocalUtil.set(claims);</span><br><span class="line">            <span class="comment">// 如果令牌验证成功，返回true，继续执行后续的请求处理</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        } <span class="keyword">catch</span> (Exception e) {</span><br><span class="line">            <span class="comment">// 如果解析令牌时出现异常，说明令牌可能无效或过期</span></span><br><span class="line">            <span class="comment">// 设置响应状态码为401</span></span><br><span class="line">            response.setStatus(<span class="number">401</span>);</span><br><span class="line">            <span class="comment">// 返回false，不再继续执行后续的请求处理</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">// afterCompletion方法在请求处理完成后调用（即在Controller方法之后）</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">afterCompletion</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)</span> <span class="keyword">throws</span> Exception {</span><br><span class="line">        <span class="comment">// 清理线程局部变量，避免内存泄漏</span></span><br><span class="line">        ThreadLocalUtil.remove();</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<p><strong>修改/userInfo接口</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@GetMapping("/userInfo")</span></span><br><span class="line"><span class="keyword">public</span> Result&lt;User&gt; <span class="title function_">userInfo</span><span class="params">()</span>{</span><br><span class="line">    Map&lt;String, Object&gt; map = ThreadLocalUtil.get();  <span class="comment">// 使用ThreadLocalUtil工具类从线程局部变量中获取存储的数据</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">username</span> <span class="operator">=</span> (String) map.get(<span class="string">"username"</span>);    <span class="comment">// 从获取的数据中提取用户名</span></span><br><span class="line">    <span class="type">User</span> <span class="variable">user</span> <span class="operator">=</span> userService.findByUserName(username);    <span class="comment">// 使用findByUserName方法根据用户名查询用户的信息</span></span><br><span class="line">    <span class="keyword">return</span> Result.success(user);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="更新用户基本信息">更新用户基本信息</h2>
+<p><img src="../%E5%9B%BE%E7%89%87/image-20240617195754402.png" alt="image-20240617195754402"></p>
+<h3 id="三层架构-2">三层架构</h3>
+<h4 id="UserController">UserController</h4>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@PutMapping("/update")</span></span><br><span class="line"><span class="keyword">public</span> Result <span class="title function_">update</span><span class="params">(<span class="meta">@RequestBody</span> User user)</span> {</span><br><span class="line">    userService.update(user);</span><br><span class="line">    <span class="keyword">return</span> Result.success();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="UserServiceImpl">UserServiceImpl</h4>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">update</span><span class="params">(User user)</span> {</span><br><span class="line">    user.setUpdateTime(LocalDateTime.now());</span><br><span class="line">    userMapper.update(user);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h4 id="UserMapper">UserMapper</h4>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@Update("update user set nickname = #{nickname},email = #{email},update_time = #{updateTime} where id = #{id}")</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">update</span><span class="params">(User user)</span>;</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="参数校验-2">参数校验</h3>
+<p><img src="../%E5%9B%BE%E7%89%87/image-20240617200259478.png" alt="image-20240617200259478"></p>
+<p>对上述的更新用户基本信息update代码进行参数校验，不同与之前注册时对属性的参数，update方法传入的参数是一个User对象</p>
+<p><img src="../%E5%9B%BE%E7%89%87/image-20240617203311920.png" alt="image-20240617203311920"></p>
+<p><strong>实体参数校验</strong></p>
+<ol>
+<li>实体类的成员变量上添加注解
+<ul>
+<li>@NotNull</li>
+<li>@NotEmpty</li>
+<li>@Email</li>
+</ul>
+</li>
+<li>接口方法的实体参数上添加 @Validated 注解</li>
+</ol>
+<h2 id="更新用户头像">更新用户头像</h2>
+<p><img src="../%E5%9B%BE%E7%89%87/image-20240618110700127.png" alt="image-20240618110700127"></p>
+<h3 id="三层架构-3">三层架构</h3>
+<p><strong>UserController</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@PatchMapping("/updateAvatar")</span></span><br><span class="line"><span class="keyword">public</span> Result <span class="title function_">updateAvatar</span><span class="params">(<span class="meta">@RequestParam</span> <span class="meta">@URL</span> String avatarUrl)</span>{</span><br><span class="line">    userService.updateAvatar(avatarUrl);</span><br><span class="line">    <span class="keyword">return</span> Result.success();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>UserServiceImpl</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">updateAvatar</span><span class="params">(String avatarUrl)</span> {</span><br><span class="line">    Map&lt;String, Object&gt; map = ThreadLocalUtil.get();<span class="comment">//ThreadLocalUtil中获取一个Map对象</span></span><br><span class="line">    <span class="type">Integer</span> <span class="variable">id</span> <span class="operator">=</span> (Integer) map.get(<span class="string">"id"</span>);<span class="comment">//从Map对象中获取用户id</span></span><br><span class="line">    userMapper.updateAvatar(avatarUrl,id);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>UserMapper</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@Update("update user set user_pic = #{userPic},update_time = NOW() where id = #{id}")</span><span class="comment">//update_time字段更新为当前时间，使NOW()函数获取</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">updateAvatar</span><span class="params">(String userPic,Integer id)</span>;</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="知识要点-3">知识要点</h3>
+<h4 id="参数校验-3"><strong>参数校验</strong></h4>
+<p>@URL注解，通常用于参数验证，表示该参数必须是一个合法的URL格式。</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> Result <span class="title function_">updateAvatar</span><span class="params">(<span class="meta">@RequestParam</span> <span class="meta">@URL</span> String avatarUrl)</span></span><br></pre></td></tr></tbody></table></figure>
+<h4 id="PatchMapping"><code>@PatchMapping</code></h4>
+<p><code>@PatchMapping</code> 注解用于将 <a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=HTTP&amp;spm=1001.2101.3001.7020">HTTP</a> PATCH 请求映射到指定的处理方法。HTTP PATCH 方法通常用于更新资源的部分内容，而不是替换整个资源。<code>@PatchMapping</code> 用于部分更新资源，而 <code>@PutMapping</code> 用于替换整个资源。<code>@PatchMapping</code> 请求仅包含要更新的部分内容，而 <code>@PutMapping</code> 请求包含完整的资源表述。</p>
+<h2 id="更新用户密码">更新用户密码</h2>
+<p><img src="../%E5%9B%BE%E7%89%87/image-20240618154824407.png" alt="image-20240618154824407"></p>
+<h3 id="三层架构-4">三层架构</h3>
+<p><strong>Usercontroller</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@PatchMapping("/updatePwd")</span></span><br><span class="line"><span class="keyword">public</span> Result <span class="title function_">updatePwd</span><span class="params">(<span class="meta">@RequestBody</span> Map&lt;String,String&gt; params)</span>{</span><br><span class="line">    <span class="comment">// 从请求体中获取旧密码、新密码和确认密码。</span></span><br><span class="line">    <span class="type">String</span> <span class="variable">oldPwd</span> <span class="operator">=</span> params.get(<span class="string">"old_pwd"</span>);</span><br><span class="line">    <span class="type">String</span> <span class="variable">newPwd</span> <span class="operator">=</span> params.get(<span class="string">"new_pwd"</span>);</span><br><span class="line">    <span class="type">String</span> <span class="variable">re_pwd</span> <span class="operator">=</span> params.get(<span class="string">"re_pwd"</span>);</span><br><span class="line">    <span class="comment">// 判断这三个密码参数是否为空，如果为空，返回错误信息。</span></span><br><span class="line">    <span class="keyword">if</span>(!StringUtils.hasLength(oldPwd)||!StringUtils.hasLength(newPwd)||!StringUtils.hasLength(re_pwd)){</span><br><span class="line">        <span class="keyword">return</span> Result.error(<span class="string">"参数错误"</span>);</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">// 从ThreadLocal中获取用户名，这通常在用户登录时设置。</span></span><br><span class="line">    Map&lt;String,Object&gt; map= ThreadLocalUtil.get();</span><br><span class="line">    <span class="type">String</span> <span class="variable">username</span> <span class="operator">=</span> (String) map.get(<span class="string">"username"</span>);</span><br><span class="line">    <span class="comment">// 使用用户名查询当前登录的用户信息。</span></span><br><span class="line">    <span class="type">User</span> <span class="variable">loginUser</span> <span class="operator">=</span> userService.findByUserName(username);</span><br><span class="line">    <span class="comment">// 比较传入的旧密码的MD5值是否与数据库中的一致，不一致则返回错误信息。</span></span><br><span class="line">    <span class="keyword">if</span>(!Md5Util.getMD5String(oldPwd).equals(loginUser.getPassword())){</span><br><span class="line">        <span class="keyword">return</span> Result.error(<span class="string">"旧密码错误"</span>);</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">// 检查新密码是否与旧密码相同，如果相同则返回错误信息。</span></span><br><span class="line">    <span class="keyword">if</span>(Md5Util.getMD5String(newPwd).equals(loginUser.getPassword())){</span><br><span class="line">        <span class="keyword">return</span> Result.error(<span class="string">"新密码不能与旧密码一致"</span>);</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">// 检查新密码和确认密码是否相同，不同则返回错误信息。</span></span><br><span class="line">    <span class="keyword">if</span>(!newPwd.equals(re_pwd)){</span><br><span class="line">        <span class="keyword">return</span> Result.error(<span class="string">"两次密码不一致"</span>);</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">// 如果所有检查都通过，调用userService的updatePwd方法更新密码。</span></span><br><span class="line">    userService.updatePwd(newPwd);</span><br><span class="line">    <span class="keyword">return</span> Result.success();</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<p><strong>UserService</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">updatePwd</span><span class="params">(String newPwd)</span> {</span><br><span class="line">    Map&lt;String, Object&gt; map = ThreadLocalUtil.get();</span><br><span class="line">    <span class="type">Integer</span> <span class="variable">id</span> <span class="operator">=</span> (Integer) map.get(<span class="string">"id"</span>);</span><br><span class="line">    <span class="type">String</span> <span class="variable">md5String</span> <span class="operator">=</span> Md5Util.getMD5String(newPwd);<span class="comment">//对新密码进行MD5加密</span></span><br><span class="line">    userMapper.updatePwd(md5String,id);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>UserMapper</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@Update("update user set password = #{newPwd},update_time = now() where id = #{id}")</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">updatePwd</span><span class="params">(String newPwd, Integer id)</span>;</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="新增文章分类">新增文章分类</h2>
+<p><img src="../%E5%9B%BE%E7%89%87/image-20240619091431586.png" alt="image-20240619091431586"></p>
+<h3 id="三层架构-5">三层架构</h3>
+<p><strong>CategoryController</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zjf.controller;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping("/category")</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CategoryController</span> {</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> CategoryService categoryService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostMapping</span></span><br><span class="line">    <span class="keyword">public</span> Result <span class="title function_">add</span><span class="params">(<span class="meta">@RequestBody</span> <span class="meta">@Validated</span> Category category)</span>{</span><br><span class="line">        categoryService.add(category);</span><br><span class="line">        <span class="keyword">return</span> Result.success();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>CategoryServiceImpl</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zjf.service.impl;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CategoryServiceImpl</span> <span class="keyword">implements</span> <span class="title class_">CategoryService</span> {</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> CategoryMapper categoryMapper;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(Category category)</span> {</span><br><span class="line">        Map&lt;String,Object&gt; map = ThreadLocalUtil.get();</span><br><span class="line">        <span class="type">Integer</span> <span class="variable">id</span> <span class="operator">=</span> (Integer) map.get(<span class="string">"id"</span>);<span class="comment">//获取当前用户id值</span></span><br><span class="line">        category.setCreateTime(LocalDateTime.now());</span><br><span class="line">        category.setUpdateTime(LocalDateTime.now());</span><br><span class="line">        category.setCreateUser(id);<span class="comment">//将当前用户id值赋给创建分类用户Create_User字段</span></span><br><span class="line">        categoryMapper.add(category);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>CategoryMapper</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">CategoryMapper</span> {</span><br><span class="line">    <span class="meta">@Insert("insert into category(category_name, category_alias, create_user, create_time, update_time)" +</span></span><br><span class="line"><span class="meta">            " VALUE(#{categoryName},#{categoryAlias},#{createUser},#{createTime},#{updateTime})")</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(Category category)</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="知识要点-4">知识要点</h3>
+<p><strong>参数校验</strong></p>
+<p>未进行控制层的参数校验之前，测试时如果传入categoryName或categoryName为空，系统会在SQL层抛出错误，通过参数校验，实现controller层抛出错误</p>
+<p>1.在Category实体类 categoryName， categoryName字段上添加@NotEmpty注解</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@NotEmpty</span></span><br><span class="line"><span class="keyword">private</span> String categoryName;<span class="comment">//分类名称</span></span><br><span class="line"><span class="meta">@NotEmpty</span></span><br><span class="line"><span class="keyword">private</span> String  categoryName;<span class="comment">//分类别名</span></span><br></pre></td></tr></tbody></table></figure>
+<p>2.在控制层对应方法参数前加上@Validated注解</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> Result <span class="title function_">add</span><span class="params">(<span class="meta">@RequestBody</span> <span class="meta">@Validated</span> Category category)</span></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="文章分类列表">文章分类列表</h2>
+<p><img src="../%E5%9B%BE%E7%89%87/image-20240619093838445.png" alt="image-20240619093838445"></p>
+<h3 id="三层架构-6">三层架构</h3>
+<p><strong>CategoryController</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span></span><br><span class="line"><span class="keyword">public</span> Result&lt;List&lt;Category&gt;&gt; <span class="title function_">list</span><span class="params">()</span>{</span><br><span class="line">    List&lt;Category&gt; cs = categoryService.list();</span><br><span class="line">    <span class="keyword">return</span> Result.success(cs);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>CategoryServiceImpl</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;Category&gt; <span class="title function_">list</span><span class="params">()</span> {</span><br><span class="line">    Map&lt;String,Object&gt; map = ThreadLocalUtil.get();</span><br><span class="line">    <span class="type">Integer</span> <span class="variable">id</span> <span class="operator">=</span> (Integer) map.get(<span class="string">"id"</span>);<span class="comment">//获取当前用户id</span></span><br><span class="line">    <span class="keyword">return</span> categoryMapper.list(id);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>CategoryMapper</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@Select("select * from category where create_user = #{id}")</span></span><br><span class="line"> List&lt;Category&gt; <span class="title function_">list</span><span class="params">(Integer id)</span>;<span class="comment">//id是user表id，也就是category表的create_user</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="知识要点-5">知识要点</h3>
+<p><strong>@JsonFormat注解</strong></p>
+<p>用于格式化Java对象中的日期和时间属性，当这个对象被转换为JSON字符串时，会按照指定的格式来格式化日期和时间</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> LocalDateTime createTime;<span class="comment">//创建时间</span></span><br><span class="line"><span class="meta">@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")</span></span><br><span class="line"><span class="keyword">private</span> LocalDateTime updateTime;<span class="comment">//更新时间</span></span><br></pre></td></tr></tbody></table></figure>
+<p><strong>测试结果：</strong></p>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line"><span class="punctuation">{</span></span><br><span class="line">			<span class="attr">"id"</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">"categoryName"</span><span class="punctuation">:</span> <span class="string">"美食"</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">"categoryAlias"</span><span class="punctuation">:</span> <span class="string">"ms"</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">"createUser"</span><span class="punctuation">:</span> <span class="number">10</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">"createTime"</span><span class="punctuation">:</span> <span class="string">"2024-06-18T17:29:26"</span><span class="punctuation">,</span><span class="comment">//未使用注解</span></span><br><span class="line">			<span class="attr">"updateTime"</span><span class="punctuation">:</span> <span class="string">"2024-06-18 17:29:26"</span><span class="comment">//使用了@JsonFrmat注解</span></span><br><span class="line">		<span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="获取文章分类详情">获取文章分类详情</h2>
+<p><img src="../%E5%9B%BE%E7%89%87/image-20240619100801212.png" alt="image-20240619100801212"></p>
+<h3 id="三层架构-7">三层架构</h3>
+<p><strong>CategoryController</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@GetMapping("/detail")</span></span><br><span class="line"><span class="keyword">public</span> Result&lt;Category&gt; <span class="title function_">detail</span><span class="params">(Integer id)</span>{<span class="comment">//参数id使category表的id</span></span><br><span class="line">    <span class="type">Category</span> <span class="variable">category</span> <span class="operator">=</span> categoryService.detail(id);</span><br><span class="line">    <span class="keyword">return</span> Result.success(category);<span class="comment">//返会category对象</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>CategoryServiceImpl</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> Category <span class="title function_">detail</span><span class="params">(Integer id)</span> {</span><br><span class="line">    <span class="keyword">return</span> categoryMapper.findById(id);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>CategoryMapper</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@Select("select * from category where id = #{id}")</span></span><br><span class="line">Category <span class="title function_">findById</span><span class="params">(Integer id)</span>;</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="更新文章分类">更新文章分类</h2>
+<p><img src="../%E5%9B%BE%E7%89%87/image-20240619102814168.png" alt="image-20240619102814168"></p>
+<h3 id="三层架构-8">三层架构</h3>
+<p><strong>CategoryController</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@PutMapping</span></span><br><span class="line"><span class="keyword">public</span> Result <span class="title function_">update</span><span class="params">(<span class="meta">@RequestBody</span> <span class="meta">@Validated(Category.Update.class)</span> Category category)</span>{<span class="comment">//@Validated参数校验</span></span><br><span class="line">    categoryService.update(category);</span><br><span class="line">    <span class="keyword">return</span> Result.success();</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>CategoryServiceImpl</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">update</span><span class="params">(Category category)</span> {</span><br><span class="line">    category.setUpdateTime(LocalDateTime.now());</span><br><span class="line">    categoryMapper.update(category);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>CategoryMapper</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@Update("update category set category_name=#{categoryName},category_alias=#{categoryAlias},update_time=#{updateTime} where id=#{id}")</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">update</span><span class="params">(Category category)</span>;</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="知识要点-6">知识要点</h3>
+<h4 id="参数校验-4">参数校验</h4>
+<p>更新文章分类参数说明：</p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>说明</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>主键ID</td>
+<td>number</td>
+<td>是</td>
+<td></td>
+</tr>
+<tr>
+<td>categoryName</td>
+<td>分类名称</td>
+<td>string</td>
+<td>是</td>
+<td></td>
+</tr>
+<tr>
+<td>categoryAlias</td>
+<td>分类别名</td>
+<td>string</td>
+<td>是</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>id、categoryName、categoryAlias均为必须，故在实体类Category类的相关字段上添加相应注解</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@NotNull</span></span><br><span class="line"><span class="keyword">private</span> Integer id;<span class="comment">//主键ID</span></span><br><span class="line"><span class="meta">@NotEmpty</span></span><br><span class="line"><span class="keyword">private</span> String categoryName;<span class="comment">//分类名称</span></span><br><span class="line"><span class="meta">@NotEmpty</span></span><br><span class="line"><span class="keyword">private</span> String categoryAlias;<span class="comment">//分类别名</span></span><br></pre></td></tr></tbody></table></figure>
+<p><strong>注意</strong>：在新增文章分类中，已经为categoryName、categoryAlias添加了@NotEmpty注解。通过给id、categoryName、categoryAlias添加注解，以及为控制层方法参数添加@Validated注解，实现了更新文章分类的参数校验，但我们注意到在新增文章分类方法中，也为相同的参数category添加了@Validated参数校验。此时，在执行新增文章分类时，会抛出id 不能为null的错误。为解决此问题，就要用到分组校验。</p>
+<h4 id="分组校验"><strong>分组校验</strong></h4>
+<p>​	把校验项进行归类分组，在完成不同的功能的时候，校验指定组中的校验项</p>
+<ol>
+<li>
+<p>定义分组</p>
+<p>在category实体类中定义了两个空接口Add和Update，用于分组校验</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Category</span> {</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Add</span>{</span><br><span class="line">}</span><br><span class="line"><span class="keyword">public</span>  <span class="keyword">interface</span> <span class="title class_">Update</span>{</span><br><span class="line">}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>定义校验项时指定归属的分组</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@NotNull(groups = Update.class)</span></span><br><span class="line"><span class="keyword">private</span> Integer id;<span class="comment">//主键ID</span></span><br><span class="line"><span class="meta">@NotEmpty(groups = {Add.class, Update.class})</span></span><br><span class="line"><span class="keyword">private</span> String categoryName;<span class="comment">//分类名称</span></span><br><span class="line"><span class="meta">@NotEmpty(groups = {Add.class, Update.class})</span></span><br><span class="line"><span class="keyword">private</span> String categoryAlias;<span class="comment">//分类别名</span></span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>校验时指定要校验的分组</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> Result <span class="title function_">update</span><span class="params">(<span class="meta">@RequestBody</span> <span class="meta">@Validated(Category.Update.class)</span> Category category)</span>{</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> Result <span class="title function_">add</span><span class="params">(<span class="meta">@RequestBody</span> <span class="meta">@Validated(Category.Add.class)</span> Category category)</span>{</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>注：</strong></p>
+<ul>
+<li>
+<p>定义校验时，如果没有指定分组，默认属于default组</p>
+</li>
+<li>
+<p>分组之间可以继承，A extends B，那么A用有B中所有的校验项</p>
+<p>上述步骤2.定义校验项时指定归属的分组，可简化如下</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@NotNull(groups = Update.class)</span></span><br><span class="line"><span class="keyword">private</span> Integer id;<span class="comment">//主键ID</span></span><br><span class="line"><span class="meta">@NotEmpty</span></span><br><span class="line"><span class="keyword">private</span> String categoryName;<span class="comment">//分类名称</span></span><br><span class="line"><span class="meta">@NotEmpty</span></span><br><span class="line"><span class="keyword">private</span> String categoryAlias;<span class="comment">//分类别名</span></span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ul>
+<h2 id="删除文章分类">删除文章分类</h2>
+<h3 id="三层架构-9">三层架构</h3>
+<p><strong>CategoryController</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@DeleteMapping</span></span><br><span class="line"><span class="keyword">public</span> Result <span class="title function_">delete</span><span class="params">(Integer id)</span>{</span><br><span class="line">    categoryService.delete(id);</span><br><span class="line">    <span class="keyword">return</span> Result.success();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>CategoryServiceImpl</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">delete</span><span class="params">(Integer id)</span> {</span><br><span class="line">    categoryMapper.delete(id);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>CategoryMapper</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@Delete("delete from category where id=#{id}")</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">delete</span><span class="params">(Integer id)</span>;</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="新增文章">新增文章</h2>
+<p><img src="../%E5%9B%BE%E7%89%87/image-20240619161039625.png" alt="image-20240619161039625"></p>
+<h3 id="三层架构-10">三层架构</h3>
+<p><strong>ArticleController</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@RequestMapping("/article")</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ArticleController</span> {</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ArticleService articleService;;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostMapping</span></span><br><span class="line">    <span class="keyword">public</span> Result <span class="title function_">add</span><span class="params">(<span class="meta">@RequestBody</span> Article article)</span>{</span><br><span class="line">        articleService.add(article);</span><br><span class="line">        <span class="keyword">return</span> Result.success();</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>ArticleServiceImpl</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@Service</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ArticleServiceImpl</span> <span class="keyword">implements</span> <span class="title class_">ArticleService</span> {</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> ArticleMapper articleMapper;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(Article article)</span> {</span><br><span class="line">        Map&lt;String,Object&gt; map = ThreadLocalUtil.get();</span><br><span class="line">        <span class="type">Integer</span> <span class="variable">id</span> <span class="operator">=</span> (Integer) map.get(<span class="string">"id"</span>);</span><br><span class="line">        article.setCreateUser(id);</span><br><span class="line">        article.setCreateTime(LocalDateTime.now());</span><br><span class="line">        article.setUpdateTime(LocalDateTime.now());</span><br><span class="line">        articleMapper.add(article);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>ArticleMapper</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">ArticleMapper</span> {</span><br><span class="line">    <span class="meta">@Insert("insert into article(title,content,cover_img,state,category_id,create_user,create_time,update_time)" +"" +</span></span><br><span class="line"><span class="meta">            "values (#{title},#{content},#{coverImg},#{state},#{categoryId},#{createUser},#{createTime},#{updateTime})")</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">add</span><span class="params">(Article article)</span>;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="知识要点-7">知识要点</h3>
+<h4 id="参数校验-5"><strong>参数校验</strong></h4>
+<p>新增文章请求参数说明：</p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>说明</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>备注</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td>文章标题</td>
+<td>string</td>
+<td>是</td>
+<td>1~10个非空字符</td>
+<td></td>
+</tr>
+<tr>
+<td>content</td>
+<td>文章正文</td>
+<td>string</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>coverImg</td>
+<td>封面图像地址</td>
+<td>string</td>
+<td>是</td>
+<td>必须是url地址</td>
+<td></td>
+</tr>
+<tr>
+<td>state</td>
+<td>发布状态</td>
+<td>string</td>
+<td>是</td>
+<td>已发布 | 草稿</td>
+<td></td>
+</tr>
+<tr>
+<td>categoryId</td>
+<td>文章分类ID</td>
+<td>number</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>自定义参数校验</strong><br>
+已有的注解不能满足所有的校验需求，特殊的情况需要自定义校验 ( 自定义校验注解 )</p>
+<ol>
+<li>
+<p>自定义注解 State</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zjf.anno;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Documented</span><span class="comment">//元注解</span></span><br><span class="line"><span class="meta">@Target({FIELD})</span><span class="comment">//元注解</span></span><br><span class="line"><span class="meta">@Retention(RUNTIME)</span><span class="comment">//元注解</span></span><br><span class="line"><span class="meta">@Constraint(validatedBy = {StateVlidation.class})</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> State {</span><br><span class="line">    <span class="comment">//提供校验后的提示信息</span></span><br><span class="line">    String <span class="title function_">message</span><span class="params">()</span> <span class="keyword">default</span> <span class="string">"{state参数的值只能是已发布或草稿}"</span>;</span><br><span class="line">    <span class="comment">//指定分组</span></span><br><span class="line">    Class&lt;?&gt;[] groups() <span class="keyword">default</span> {};</span><br><span class="line">    <span class="comment">//负载 获取到State注解的附加信息</span></span><br><span class="line">    Class&lt;? <span class="keyword">extends</span> <span class="title class_">Payload</span>&gt;[] payload() <span class="keyword">default</span> {};</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>自定义校验数据的类 StateValidation实现 ConstraintValidator 接口</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zjf.validation;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StateVlidation</span> <span class="keyword">implements</span> <span class="title class_">ConstraintValidator</span>&lt;State,String&gt; {</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isValid</span><span class="params">(String value, ConstraintValidatorContext context)</span> {</span><br><span class="line">        <span class="keyword">if</span>(value==<span class="literal">null</span>){</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span>(value.equals(<span class="string">"已发布"</span>)||value.equals(<span class="string">"草稿"</span>)){</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>在需要校验的地方使用自定义注解</p>
+</li>
+</ol>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Article</span> {</span><br><span class="line">    <span class="keyword">private</span> Integer id;<span class="comment">//主键ID</span></span><br><span class="line">    <span class="meta">@NotEmpty</span></span><br><span class="line">    <span class="meta">@Pattern(regexp = "^\\S{1,10}$")</span></span><br><span class="line">    <span class="keyword">private</span> String title;<span class="comment">//文章标题</span></span><br><span class="line">    <span class="meta">@NotEmpty</span></span><br><span class="line">    <span class="keyword">private</span> String content;<span class="comment">//文章内容</span></span><br><span class="line">    <span class="meta">@NotEmpty</span></span><br><span class="line">    <span class="meta">@URL</span></span><br><span class="line">    <span class="keyword">private</span> String coverImg;<span class="comment">//封面图像</span></span><br><span class="line">    </span><br><span class="line">    <span class="meta">@State</span></span><br><span class="line">    <span class="keyword">private</span> String state;<span class="comment">//发布状态 已发布|草稿</span></span><br><span class="line">    <span class="meta">@NotNull</span></span><br><span class="line">    <span class="keyword">private</span> Integer categoryId;<span class="comment">//文章分类id</span></span><br><span class="line">    <span class="keyword">private</span> Integer createUser;<span class="comment">//创建人ID</span></span><br><span class="line">    <span class="keyword">private</span> LocalDateTime createTime;<span class="comment">//创建时间</span></span><br><span class="line">    <span class="keyword">private</span> LocalDateTime updateTime;<span class="comment">//更新时间</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="文章列表-条件分页">文章列表 ( 条件分页 )</h2>
+<h3 id="引入pagehelper依赖">引入pagehelper依赖</h3>
+<figure class="highlight xml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.pagehelper<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>pagehelper-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.4.6<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="导入PageBean实体">导入PageBean实体</h3>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zjf.pojo;</span><br><span class="line"></span><br><span class="line"><span class="comment">//分页返回结果对象</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PageBean</span> &lt;T&gt;{</span><br><span class="line">    <span class="keyword">private</span> Long total;<span class="comment">//总条数</span></span><br><span class="line">    <span class="keyword">private</span> List&lt;T&gt; items;<span class="comment">//当前页数据集合</span></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="三层架构-11">三层架构</h3>
+<h4 id="ArticleController"><strong>ArticleController</strong></h4>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span></span><br><span class="line"><span class="comment">// pageNum参数用于接收请求的页码，pageSize参数用于接收每页显示的记录数；</span></span><br><span class="line"><span class="comment">//@RequestParam(required = false)表示该参数是可选的，可输入也可不输入</span></span><br><span class="line"> <span class="keyword">public</span>  Result&lt;PageBean&lt;Article&gt; &gt; list(Integer pageNum, Integer pageSize, <span class="meta">@RequestParam(required = false)</span> Integer categoryId, <span class="meta">@RequestParam(required = false)</span> String state){</span><br><span class="line">     PageBean&lt;Article&gt; pageBean = articleService.list(pageNum,pageSize,categoryId,state);  <span class="comment">// 获取分页查询的结果，并存储在pageBean对象中</span></span><br><span class="line">     <span class="keyword">return</span> Result.success(pageBean);</span><br><span class="line"> }</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>ArticleServiceImpl</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 重写list方法，以实现分页查询文章列表的功能。</span></span><br><span class="line"><span class="comment"> * 根据传入的页码、每页记录数、分类ID和文章状态来筛选和分页文章。</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> pageNum 请求的页码</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> pageSize 每页显示的记录数</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> categoryId 文章分类ID</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> state 文章的状态</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> 包含分页信息和文章列表的PageBean对象</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> PageBean&lt;Article&gt; <span class="title function_">list</span><span class="params">(Integer pageNum, Integer pageSize, Integer categoryId, String state)</span> {</span><br><span class="line">    PageBean&lt;Article&gt; pb = <span class="keyword">new</span> <span class="title class_">PageBean</span>&lt;&gt;();    <span class="comment">// 创建PageBean对象，用于存储分页信息和文章列表</span></span><br><span class="line">    PageHelper.startPage(pageNum, pageSize);    <span class="comment">//开启分页查询</span></span><br><span class="line">    Map&lt;String, Object&gt; map = ThreadLocalUtil.get();</span><br><span class="line">    <span class="type">Integer</span> <span class="variable">id</span> <span class="operator">=</span> (Integer) map.get(<span class="string">"id"</span>);<span class="comment">//获取用户当前id</span></span><br><span class="line">    List&lt;Article&gt; as = articleMapper.list(categoryId, state, id);    </span><br><span class="line">    <span class="comment">// 将查询结果转换为Page对象</span></span><br><span class="line">    Page&lt;Article&gt; p = (Page&lt;Article&gt;) as;    </span><br><span class="line">    <span class="comment">// 设置PageBean的总记录数，从Page对象中获取</span></span><br><span class="line">    pb.setTotal(p.getTotal());</span><br><span class="line">    <span class="comment">// 设置PageBean的文章列表，从Page对象中获取查询结果</span></span><br><span class="line">    pb.setItems(p.getResult());</span><br><span class="line">    <span class="comment">// 返回包含分页信息和文章列表的PageBean对象</span></span><br><span class="line">    <span class="keyword">return</span> pb;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>ArticleMapper</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line">List&lt;Article&gt; <span class="title function_">list</span><span class="params">(Integer categoryId, String state, Integer id)</span>;</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>ArticleMapper.xml</strong></p>
+<figure class="highlight xml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span> ?&gt;</span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">mapper</span></span></span><br><span class="line"><span class="meta">        <span class="keyword">PUBLIC</span> <span class="string">"-//mybatis.org//DTD Mapper 3.0//EN"</span></span></span><br><span class="line"><span class="meta">        <span class="string">"http://mybatis.org/dtd/mybatis-3-mapper.dtd"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"com.zjf.mapper.ArticleMapper"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"list"</span> <span class="attr">resultType</span>=<span class="string">"com.zjf.pojo.Article"</span>&gt;</span></span><br><span class="line">        select * from article</span><br><span class="line">    <span class="tag">&lt;<span class="name">where</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"categoryId!=null"</span>&gt;</span></span><br><span class="line">             category_id=#{categoryId}</span><br><span class="line">        <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">if</span> <span class="attr">test</span>=<span class="string">"state!=null and state!=''"</span>&gt;</span></span><br><span class="line">            and state=#{state}</span><br><span class="line">        <span class="tag">&lt;/<span class="name">if</span>&gt;</span></span><br><span class="line">            and create_user=#{id}</span><br><span class="line">    <span class="tag">&lt;/<span class="name">where</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="知识要点-8">知识要点</h3>
+<h4 id="RequestParam">@RequestParam</h4>
+<p><strong>@RequestParam</strong>注解是将请求参数绑定到控制器的方法参数上</p>
+<p><strong>1、语法：</strong>@RequestParam(value=”参数名”,required=”true/false”,defaultValue=””)</p>
+<p><strong>2、属性：</strong></p>
+<ul>
+<li><strong>value</strong>：表示参数名，即前端页面传过来的参数名</li>
+<li><strong>defaultValue</strong>：参数默认值，如果设置了该值，required=true将失效，自动为false,如果没有传该参数，就使用默认值</li>
+<li><strong>required</strong>：表示是否要强制包含该参数，默认值为false,表示允许请求中不包含该参数，并且该参数值会为设为null。true表示该请求中必须包含该参数否则报错</li>
+</ul>
+<hr>
+<h4 id="动态SQL">动态SQL</h4>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://mybatis.net.cn/dynamic-sql.html">动态 SQL_MyBatis中文网</a></p>
+</blockquote>
+<h2 id="获取文章详情">获取文章详情</h2>
+<h3 id="三层架构-12">三层架构</h3>
+<p><strong>ArticleController</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@GetMapping("/detail")</span></span><br><span class="line"><span class="keyword">public</span> Result <span class="title function_">detail</span><span class="params">(Integer id)</span>{</span><br><span class="line">   <span class="type">Article</span> <span class="variable">article</span> <span class="operator">=</span> articleService.findById(id);</span><br><span class="line">    <span class="keyword">return</span> Result.success(article);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>ArticleServiceImpl</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> Article <span class="title function_">findById</span><span class="params">(Integer id)</span> {</span><br><span class="line"> <span class="type">Article</span> <span class="variable">article</span> <span class="operator">=</span>  articleMapper.findById(id);</span><br><span class="line"> <span class="keyword">return</span> article;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>ArticleMapper</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@Select("select * from article where id=#{id}")</span></span><br><span class="line">Article <span class="title function_">findById</span><span class="params">(Integer id)</span>;</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="参数校验-6">参数校验</h3>
+<p>响应参数说明：</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>默认值</th>
+<th>备注</th>
+<th>其他信息</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>number</td>
+<td>必须</td>
+<td></td>
+<td>响应码, 0-成功,1-失败</td>
+<td></td>
+</tr>
+<tr>
+<td>message</td>
+<td>string</td>
+<td>非必须</td>
+<td></td>
+<td>提示信息</td>
+<td></td>
+</tr>
+<tr>
+<td>data</td>
+<td>object</td>
+<td>必须</td>
+<td></td>
+<td>返回的数据</td>
+<td></td>
+</tr>
+<tr>
+<td>|-id</td>
+<td>number</td>
+<td>非必须</td>
+<td></td>
+<td>主键ID</td>
+<td></td>
+</tr>
+<tr>
+<td>|-title</td>
+<td>string</td>
+<td>非必须</td>
+<td></td>
+<td>文章标题</td>
+<td></td>
+</tr>
+<tr>
+<td>|-content</td>
+<td>string</td>
+<td>非必须</td>
+<td></td>
+<td>文章正文</td>
+<td></td>
+</tr>
+<tr>
+<td>|-coverImg</td>
+<td>string</td>
+<td>非必须</td>
+<td></td>
+<td>文章封面图像地址</td>
+<td></td>
+</tr>
+<tr>
+<td>|-state</td>
+<td>string</td>
+<td>非必须</td>
+<td></td>
+<td>发布状态</td>
+<td>已发布|草稿</td>
+</tr>
+<tr>
+<td>|-categoryId</td>
+<td>number</td>
+<td>非必须</td>
+<td></td>
+<td>文章分类ID</td>
+<td></td>
+</tr>
+<tr>
+<td>|-createTime</td>
+<td>string</td>
+<td>非必须</td>
+<td></td>
+<td>创建时间</td>
+<td></td>
+</tr>
+<tr>
+<td>|-updateTime</td>
+<td>string</td>
+<td>非必须</td>
+<td></td>
+<td>更新时间</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>响应数据样例：</p>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line"><span class="punctuation">{</span></span><br><span class="line">    <span class="attr">"code"</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"message"</span><span class="punctuation">:</span> <span class="string">"操作成功"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"data"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">        <span class="attr">"id"</span><span class="punctuation">:</span> <span class="number">4</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">"title"</span><span class="punctuation">:</span> <span class="string">"北京旅游攻略"</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">"content"</span><span class="punctuation">:</span> <span class="string">"天安门,颐和园,鸟巢,长城...爱去哪去哪..."</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">"coverImg"</span><span class="punctuation">:</span> <span class="string">"https://big-event-gwd.oss-cn-beijing.aliyuncs.com/9bf1cf5b-1420-4c1b-91ad-e0f4631cbed4.png"</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">"state"</span><span class="punctuation">:</span> <span class="string">"已发布"</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">"categoryId"</span><span class="punctuation">:</span> <span class="number">2</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">"createTime"</span><span class="punctuation">:</span> <span class="string">"2023-09-03 11:35:04"</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">"updateTime"</span><span class="punctuation">:</span> <span class="string">"2023-09-03 11:40:31"</span></span><br><span class="line">    <span class="punctuation">}</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+<p>使用@JsonIgnore 注解在序列化和反序列化时忽略createUser字段；使用@JsonFormat(pattern = “yyyy-MM-dd HH:mm:ss”) 注解在序列化和反序列化时，按照指定的日期时间格式进行处理。</p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@JsonIgnore</span></span><br><span class="line"><span class="keyword">private</span> Integer createUser;<span class="comment">//创建人ID</span></span><br><span class="line"><span class="meta">@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")</span></span><br><span class="line"><span class="keyword">private</span> LocalDateTime createTime;<span class="comment">//创建时间</span></span><br><span class="line"><span class="meta">@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")</span></span><br><span class="line"><span class="keyword">private</span> LocalDateTime updateTime;<span class="comment">//更新时间</span></span><br></pre></td></tr></tbody></table></figure>
+<h2 id="更新文章">更新文章</h2>
+<h3 id="三层架构-13">三层架构</h3>
+<p><strong>ArticleController</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@PutMapping</span></span><br><span class="line"><span class="keyword">public</span> Result <span class="title function_">update</span><span class="params">(<span class="meta">@RequestBody</span> <span class="meta">@Validated(Category.Update.class)</span> Category category)</span>{</span><br><span class="line">    categoryService.update(category);</span><br><span class="line">    <span class="keyword">return</span> Result.success();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>ArticleServiceImpl</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">update</span><span class="params">(Category category)</span> {</span><br><span class="line">    category.setUpdateTime(LocalDateTime.now());</span><br><span class="line">    categoryMapper.update(category);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>ArticleMapper</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@Update("update article set title=#{title},content=#{content},cover_img=#{coverImg},state=#{state},category_id=#{categoryId},update_time=now() where id=#{id}")</span></span><br><span class="line"><span class="keyword">void</span> <span class="title function_">update</span><span class="params">(Article article)</span>;</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="参数校验-7">参数校验</h3>
+<p><strong>请求参数说明：</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数名称</th>
+<th>说明</th>
+<th>类型</th>
+<th>是否必须</th>
+<th>备注</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>主键ID</td>
+<td>number</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>title</td>
+<td>文章标题</td>
+<td>string</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>content</td>
+<td>文章正文</td>
+<td>string</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>coverImg</td>
+<td>封面图像地址</td>
+<td>string</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>state</td>
+<td>发布状态</td>
+<td>string</td>
+<td>是</td>
+<td>已发布 | 草稿</td>
+<td></td>
+</tr>
+<tr>
+<td>categoryId</td>
+<td>文章分类ID</td>
+<td>number</td>
+<td>是</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>分组校验：</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Article</span> {</span><br><span class="line">    <span class="meta">@NotNull(groups = Article.update.class)</span></span><br><span class="line">    <span class="keyword">private</span> Integer id;<span class="comment">//主键ID</span></span><br><span class="line">    <span class="comment">//新增文章已添加，保持不变</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">add</span>{</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">update</span>{</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@PostMapping</span></span><br><span class="line"><span class="keyword">public</span> Result <span class="title function_">add</span><span class="params">(<span class="meta">@RequestBody</span> <span class="meta">@Validated(Article.add.class)</span> Article article)</span>{</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@PutMapping</span></span><br><span class="line"><span class="keyword">public</span> Result <span class="title function_">update</span><span class="params">(<span class="meta">@RequestBody</span> <span class="meta">@Validated(Article.update.class)</span> Article article)</span>{</span><br><span class="line"></span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="删除文章">删除文章</h2>
+<h3 id="三层架构-14">三层架构</h3>
+<p><strong>ArticleController</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@DeleteMapping</span></span><br><span class="line">  <span class="keyword">public</span> Result <span class="title function_">delete</span><span class="params">(Integer id)</span>{</span><br><span class="line">      articleService.delete(id);</span><br><span class="line">      <span class="keyword">return</span> Result.success();</span><br><span class="line">  }</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>ArticleServiceImpl</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">delete</span><span class="params">(Integer id)</span> {</span><br><span class="line">        articleMapper.delete(id);</span><br><span class="line">    }</span><br></pre></td></tr></tbody></table></figure>
+<p><strong>ArticleMapper</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@Delete("delete from article where id=#{id}")</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">delete</span><span class="params">(Integer id)</span>;</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="文件上传">文件上传</h2>
+<h3 id="本地存储">本地存储</h3>
+<p><strong>FileUploadController</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zjf.controller;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FileUploadController</span> {</span><br><span class="line">    <span class="meta">@PostMapping("/upload")</span></span><br><span class="line">    <span class="keyword">public</span> Result&lt;String&gt; <span class="title function_">upload</span><span class="params">(MultipartFile file)</span> <span class="keyword">throws</span> Exception {</span><br><span class="line">        <span class="comment">// 获取上传文件的原始文件名</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">originalFilename</span> <span class="operator">=</span> file.getOriginalFilename();</span><br><span class="line">        <span class="comment">// 生成一个新的文件名，防止文件名冲突</span></span><br><span class="line">        <span class="comment">// 使用UUID生成唯一标识，并保留原始文件的扩展名</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">filename</span> <span class="operator">=</span> UUID.randomUUID().toString() + originalFilename.substring(originalFilename.lastIndexOf(<span class="string">"."</span>));</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 将文件保存到本地文件系统的代码</span></span><br><span class="line">         file.transferTo(<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">"D:\\桌面\\大事件\\files\\"</span> + filename));</span><br><span class="line">        <span class="comment">// 返回一个包含文件URL的Result对象，表示文件上传成功</span></span><br><span class="line">        <span class="keyword">return</span> Result.success(<span class="string">"url地址......"</span>);</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="阿里云-OSS">阿里云 OSS</h3>
+<p>阿里云对象存储 OSS （ Object Storage Service ），是一款海量、安全、低成本、高可靠的云存储服务。使用 OSS ，您<br>
+可以通过网络随时存储和调用包括文本、图片、音频和视频等在内的各种文件。</p>
+<p><img src="../%E5%9B%BE%E7%89%87/image-20240621161522818.png" alt="image-20240621161522818"></p>
+<ul>
+<li>使用操作说明详见 <strong>大事件\04_综合案例资料\05_阿里云oss\AliOSS.pdf</strong></li>
+<li><a target="_blank" rel="noopener" href="https://help.aliyun.com/zh/oss/developer-reference/java-installation?spm=a2c4g.11186623.6.919.7c264562C2Fjfs">OSS快速入门官方参考文档</a></li>
+</ul>
+<hr>
+<h4 id="实现步骤">实现步骤</h4>
+<ol>
+<li>
+<p><strong>引入SDK</strong></p>
+<figure class="highlight xml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.aliyun.oss<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>aliyun-sdk-oss<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.15.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p><strong>导入 AliOssUtil工具类</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zjf.bigeventadmin.utils;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.aliyun.oss.ClientException;</span><br><span class="line"><span class="keyword">import</span> com.aliyun.oss.OSS;</span><br><span class="line"><span class="keyword">import</span> com.aliyun.oss.OSSClientBuilder;</span><br><span class="line"><span class="keyword">import</span> com.aliyun.oss.OSSException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">AliOssUtil</span> {</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">ENDPOINT</span> <span class="operator">=</span> <span class="string">"https://oss-cn-beijing.aliyuncs.com"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">ACCESS_KEY_ID</span> <span class="operator">=</span> <span class="string">"LTAI5tQ8e13igWZUMTjMEEQV"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">SECRET_ACCESS_KEY</span> <span class="operator">=</span> <span class="string">"MffMJoM24sc59SEBEJQDb0cfBVOAC9"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="type">String</span> <span class="variable">BUCKET_NAME</span> <span class="operator">=</span> <span class="string">"big-event-gwd"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//上传文件,返回文件的公网访问地址</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">uploadFile</span><span class="params">(String objectName, InputStream inputStream)</span>{</span><br><span class="line">        <span class="comment">// 创建OSSClient实例。</span></span><br><span class="line">        <span class="type">OSS</span> <span class="variable">ossClient</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">OSSClientBuilder</span>().build(ENDPOINT,ACCESS_KEY_ID,SECRET_ACCESS_KEY);</span><br><span class="line">        <span class="comment">//公文访问地址</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">try</span> {</span><br><span class="line">            <span class="comment">// 创建存储空间。</span></span><br><span class="line">            ossClient.createBucket(BUCKET_NAME);</span><br><span class="line">            ossClient.putObject(BUCKET_NAME, objectName, inputStream);</span><br><span class="line">            url = <span class="string">"https://"</span>+BUCKET_NAME+<span class="string">"."</span>+ENDPOINT.substring(ENDPOINT.lastIndexOf(<span class="string">"/"</span>)+<span class="number">1</span>)+<span class="string">"/"</span>+objectName;</span><br><span class="line">        } <span class="keyword">catch</span> (OSSException oe) {</span><br><span class="line">            System.out.println(<span class="string">"Caught an OSSException, which means your request made it to OSS, "</span></span><br><span class="line">                    + <span class="string">"but was rejected with an error response for some reason."</span>);</span><br><span class="line">            System.out.println(<span class="string">"Error Message:"</span> + oe.getErrorMessage());</span><br><span class="line">            System.out.println(<span class="string">"Error Code:"</span> + oe.getErrorCode());</span><br><span class="line">            System.out.println(<span class="string">"Request ID:"</span> + oe.getRequestId());</span><br><span class="line">            System.out.println(<span class="string">"Host ID:"</span> + oe.getHostId());</span><br><span class="line">        } <span class="keyword">catch</span> (ClientException ce) {</span><br><span class="line">            System.out.println(<span class="string">"Caught an ClientException, which means the client encountered "</span></span><br><span class="line">                    + <span class="string">"a serious internal problem while trying to communicate with OSS, "</span></span><br><span class="line">                    + <span class="string">"such as not being able to access the network."</span>);</span><br><span class="line">            System.out.println(<span class="string">"Error Message:"</span> + ce.getMessage());</span><br><span class="line">        } <span class="keyword">finally</span> {</span><br><span class="line">            <span class="keyword">if</span> (ossClient != <span class="literal">null</span>) {</span><br><span class="line">                ossClient.shutdown();</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> url;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<p><em><strong>注意</strong></em>： ENDPOINT ，ACCESS_KEY_ID,ACCESS_KEY_SECRET，BUCKET_NAME根据个人对象存储OSS进行修改</p>
+<ol start="3">
+<li>
+<p><strong>FileUploadController</strong></p>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@PostMapping("/upload")</span></span><br><span class="line"><span class="keyword">public</span> Result&lt;String&gt; <span class="title function_">upload</span><span class="params">(MultipartFile file)</span> <span class="keyword">throws</span> Exception {</span><br><span class="line">    <span class="type">String</span> <span class="variable">originalFilename</span> <span class="operator">=</span> file.getOriginalFilename();</span><br><span class="line">    <span class="type">String</span> <span class="variable">filename</span> <span class="operator">=</span> UUID.randomUUID().toString()+originalFilename.substring(originalFilename.lastIndexOf(<span class="string">"."</span>));</span><br><span class="line">    <span class="type">String</span> <span class="variable">url</span> <span class="operator">=</span> AliOssUtil.uploadFile(filename, file.getInputStream());</span><br><span class="line">    <span class="keyword">return</span> Result.success(url);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+</li>
+</ol>
+<h2 id="登陆优化-redis">登陆优化-redis</h2>
+<p>​	在原来的登陆实现中，用户登陆系统，当修改密码成功后，那将来用户需要使用新的密码重新登陆系统。重新登录成功后，后台会下发新的令牌，但旧的令牌在之前的程序中没有作废，仍然可以使用旧的令牌访问用户资源。</p>
+<h3 id="SpringBoot-集成-redis">SpringBoot 集成 redis</h3>
+<ul>
+<li>导入 spring-boot-starter-data-redis 起步依赖</li>
+</ul>
+  <figure class="highlight xml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>在 yml 配置文件中 , 配置 redis 连接信息</li>
+</ul>
+  <figure class="highlight yml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">data:</span></span><br><span class="line">    <span class="attr">redis:</span></span><br><span class="line">      <span class="attr">host:</span> <span class="string">localhost</span></span><br><span class="line">      <span class="attr">port:</span> <span class="number">6379</span></span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>调用 API(StringRedisTemplate) 完成字符串的存取操作</li>
+</ul>
+<p>​	编写redis测试代码</p>
+  <figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zjf;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.junit.jupiter.api.Test;</span><br><span class="line"><span class="keyword">import</span> org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.test.context.SpringBootTest;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.redis.core.StringRedisTemplate;</span><br><span class="line"><span class="keyword">import</span> org.springframework.data.redis.core.ValueOperations;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.TimeUnit;</span><br><span class="line"></span><br><span class="line"><span class="meta">@SpringBootTest</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RedisTest</span> {</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> StringRedisTemplate stringRedisTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test1</span><span class="params">()</span></span><br><span class="line">    {</span><br><span class="line">        ValueOperations&lt;String, String&gt; operations = stringRedisTemplate.opsForValue();</span><br><span class="line">        operations.set(<span class="string">"username"</span>, <span class="string">"zjf"</span>);</span><br><span class="line">        operations.set(<span class="string">"id"</span>,<span class="string">"1"</span>,<span class="number">15</span>, TimeUnit.SECONDS);</span><br><span class="line">    }</span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test2</span><span class="params">()</span></span><br><span class="line">    {</span><br><span class="line">        <span class="type">String</span> <span class="variable">username</span> <span class="operator">=</span> stringRedisTemplate.opsForValue().get(<span class="string">"username"</span>);</span><br><span class="line">        System.out.println(username);</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="令牌主动失效机制">令牌主动失效机制</h3>
+<ul>
+<li>登录成功后，给浏览器响应令牌的同时，把该令牌存储到 redis 中</li>
+</ul>
+  <figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line">/省略无关代码，保持不变/</span><br><span class="line">    </span><br><span class="line">       <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> StringRedisTemplate stringRedisTemplate; </span><br><span class="line"></span><br><span class="line"><span class="meta">@PostMapping("/login")</span></span><br><span class="line"><span class="keyword">public</span> Result <span class="title function_">login</span><span class="params">(<span class="meta">@Pattern(regexp = "^\\S{5,16}$")</span> String username, <span class="meta">@Pattern(regexp = "^\\S{5,16}$")</span> String password)</span> {</span><br><span class="line">    <span class="type">User</span> <span class="variable">loginUser</span> <span class="operator">=</span> userService.findByUserName(username);</span><br><span class="line">    <span class="comment">//判断该用户是否存在</span></span><br><span class="line">    <span class="keyword">if</span> (loginUser == <span class="literal">null</span>) {</span><br><span class="line">        <span class="keyword">return</span> Result.error(<span class="string">"用户名错误"</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">//判断密码是否正确  loginUser对象中的password是密文</span></span><br><span class="line">    <span class="keyword">if</span> (Md5Util.getMD5String(password).equals(loginUser.getPassword())) {</span><br><span class="line">        <span class="comment">//登录成功</span></span><br><span class="line">        Map&lt;String, Object&gt; claims = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        claims.put(<span class="string">"id"</span>, loginUser.getId());</span><br><span class="line">        claims.put(<span class="string">"username"</span>, loginUser.getUsername());</span><br><span class="line">        <span class="type">String</span> <span class="variable">token</span> <span class="operator">=</span> JwtUtil.genToken(claims);</span><br><span class="line">         <span class="comment">// 使用stringRedisTemplate操作Redis，将token作为key，token本身作为value存入Redis</span></span><br><span class="line">        <span class="comment">// 设置过期时间为1小时</span></span><br><span class="line">        ValueOperations&lt;String, String&gt; operations = stringRedisTemplate.opsForValue();</span><br><span class="line">        operations.set(token, token, <span class="number">1</span>, TimeUnit.HOURS);</span><br><span class="line">        ValueOperations&lt;String, String&gt; operations = stringRedisTemplate.opsForValue();</span><br><span class="line">        operations.set(token, token, <span class="number">1</span>, TimeUnit.HOURS);</span><br><span class="line">        <span class="keyword">return</span> Result.success(token);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> Result.error(<span class="string">"密码错误"</span>);</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>LoginInterceptor 拦截器中，需要验证浏览器携带的令牌，并同时需要获取到 redis 中存储的与之相同的令牌</li>
+</ul>
+  <figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> StringRedisTemplate stringRedisTemplate;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span> <span class="keyword">throws</span> Exception {</span><br><span class="line">    <span class="type">String</span> <span class="variable">token</span> <span class="operator">=</span> request.getHeader(<span class="string">"Authorization"</span>);</span><br><span class="line">    <span class="keyword">try</span> {</span><br><span class="line">        ValueOperations&lt;String, String&gt; operations = stringRedisTemplate.opsForValue();</span><br><span class="line">        <span class="type">String</span> <span class="variable">redisToken</span> <span class="operator">=</span> operations.get(token);</span><br><span class="line">        <span class="keyword">if</span> (redisToken == <span class="literal">null</span>) {</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>();</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        Map&lt;String, Object&gt; claims = JwtUtil.parseToken(token);</span><br><span class="line">        ThreadLocalUtil.set(claims);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    } <span class="keyword">catch</span> (Exception e) {</span><br><span class="line">        response.setStatus(<span class="number">401</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>当用户修改密码成功后，删除 redis 中存储的旧令牌</li>
+</ul>
+<figure class="highlight java"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">@PatchMapping("/updatePwd")</span></span><br><span class="line"><span class="keyword">public</span> Result <span class="title function_">updatePwd</span><span class="params">(<span class="meta">@RequestBody</span> Map&lt;String,String&gt; params,<span class="meta">@RequestHeader("Authorization")</span> String token)</span>{</span><br><span class="line">    <span class="type">String</span> <span class="variable">oldPwd</span> <span class="operator">=</span> params.get(<span class="string">"old_pwd"</span>);</span><br><span class="line">    <span class="type">String</span> <span class="variable">newPwd</span> <span class="operator">=</span> params.get(<span class="string">"new_pwd"</span>);</span><br><span class="line">    <span class="type">String</span> <span class="variable">re_pwd</span> <span class="operator">=</span> params.get(<span class="string">"re_pwd"</span>);</span><br><span class="line">    <span class="keyword">if</span>(!StringUtils.hasLength(oldPwd)||!StringUtils.hasLength(newPwd)||!StringUtils.hasLength(re_pwd)){</span><br><span class="line">        <span class="keyword">return</span> Result.error(<span class="string">"参数错误"</span>);</span><br><span class="line">    }</span><br><span class="line">    Map&lt;String,Object&gt; map= ThreadLocalUtil.get();</span><br><span class="line">    <span class="type">String</span> <span class="variable">username</span> <span class="operator">=</span> (String) map.get(<span class="string">"username"</span>);</span><br><span class="line">    <span class="type">User</span> <span class="variable">loginUser</span> <span class="operator">=</span> userService.findByUserName(username);</span><br><span class="line">    <span class="keyword">if</span>(!Md5Util.getMD5String(oldPwd).equals(loginUser.getPassword())){</span><br><span class="line">        <span class="keyword">return</span> Result.error(<span class="string">"旧密码错误"</span>);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">if</span>(Md5Util.getMD5String(newPwd).equals(loginUser.getPassword())){</span><br><span class="line">        <span class="keyword">return</span> Result.error(<span class="string">"新密码不能与旧密码一致"</span>);</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">if</span>(!newPwd.equals(re_pwd)){</span><br><span class="line">        <span class="keyword">return</span> Result.error(<span class="string">"两次密码不一致"</span>);</span><br><span class="line">    }</span><br><span class="line">    userService.updatePwd(newPwd);</span><br><span class="line">    ValueOperations&lt;String, String&gt; operations = stringRedisTemplate.opsForValue();</span><br><span class="line">    operations.getOperations().delete(token);</span><br><span class="line">    <span class="keyword">return</span> Result.success();</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+<h2 id="SpringBoot-项目部署">SpringBoot 项目部署</h2>
+<p><img src="../%E5%9B%BE%E7%89%87/image-20240622102014405.png" alt="image-20240622102014405"></p>
+<ol>
+<li>
+<p>引入插件</p>
+<figure class="highlight xml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>Maven中Lifecycle执行package命令</p>
+</li>
+<li>
+<p>在target目录下，CMD执行命令java -jar big_event-0.0.1-SNAPSHOT.jar</p>
+</li>
+</ol>
+<h2 id="属性配置方式">属性配置方式</h2>
+<h3 id="项目配置文件方式">项目配置文件方式</h3>
+<p>在项目resources文件夹下application.yml文件下配置</p>
+<figure class="highlight yml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8080</span></span><br></pre></td></tr></tbody></table></figure>
+<h3 id="命令行参数方式">命令行参数方式</h3>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">java -jar big_event-0.0.1-SNAPSHOT.jar --server.port=8081</span><br></pre></td></tr></tbody></table></figure>
+<h3 id="环境变量方式">环境变量方式</h3>
+<p><img src="../%E5%9B%BE%E7%89%87/image-20240622104358615.png" alt="image-20240622104358615"></p>
+<h3 id="外部配置文件方式">外部配置文件方式</h3>
+<p><img src="../%E5%9B%BE%E7%89%87/image-20240622104433560.png" alt="image-20240622104433560"></p>
+<h3 id="配置优先级">配置优先级</h3>
+<ol>
+<li>命令行参数</li>
+<li>操作系统环境变量</li>
+<li>Jar 包所在目录下的 application.yml</li>
+<li>项目中 resources 目录下的 application.yml</li>
+</ol>
+<h2 id="多环境开发-Profiles">多环境开发-Profiles</h2>
+<h3 id="1-单文件配置">1. 单文件配置</h3>
+<p>在实际项目的开发过程中，我们程序往往需要在不同环境中运行。例如：开发环境、测试环境和生产环境。</p>
+<p>每个环境中的配置参数可能都会有所不同，例如数据库连接信息、文件服务器等等。</p>
+<p>SpringBoot 提供的 Profiles 可以用来隔离应用程序配置的各个部分，并在特定环境下指定部分配置生效</p>
+<ul>
+<li>
+<p>如何分隔不同环境的配置？</p>
+<figure class="highlight yml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br></pre></td></tr></tbody></table></figure>
+</li>
+<li>
+<p>如何指定哪些配置属于哪个环境？</p>
+</li>
+</ul>
+  <figure class="highlight yml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line"> <span class="attr">config:</span></span><br><span class="line">  <span class="attr">activate:</span></span><br><span class="line">   <span class="attr">on-profile:</span> <span class="string">环境名称</span></span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>
+<p>如何指定哪个环境的配置生效？</p>
+<figure class="highlight yml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line"> <span class="attr">profiles:</span></span><br><span class="line">  <span class="attr">active:</span> <span class="string">环境名称</span></span><br></pre></td></tr></tbody></table></figure>
+<p>示例：appliction.yml</p>
+<figure class="highlight yml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="comment"># 通用信息，指定生生效的环境</span></span><br><span class="line"><span class="comment">#多环境下的共性的属性</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">profiles:</span></span><br><span class="line">    <span class="attr">active:</span> <span class="string">test</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="comment"># 生产环境</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">config:</span></span><br><span class="line">    <span class="attr">activate:</span></span><br><span class="line">      <span class="attr">on-profile:</span> <span class="string">pro</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8081</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="comment"># 开发环境</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">config:</span></span><br><span class="line">    <span class="attr">activate:</span></span><br><span class="line">      <span class="attr">on-profile:</span> <span class="string">dev</span></span><br><span class="line"><span class="attr">server:</span></span><br><span class="line">  <span class="attr">port:</span> <span class="number">8082</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="comment"># 测试环境</span></span><br><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">config:</span></span><br><span class="line">    <span class="attr">activate:</span></span><br><span class="line">      <span class="attr">on-profile:</span> <span class="string">test</span></span><br><span class="line"><span class="string">server:8083</span></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+<p>**注：**如果特定环境中的配置和通用信息冲突了，特定环境配置生效</p>
+<h3 id="2-多文件配置">2. 多文件配置</h3>
+</li>
+</ul>
+<p>开发(<code>dev</code>)、测试（<code>test</code>）、生产（<code>prod</code>）分别建立配置文件</p>
+<ul>
+<li>
+<p><code>application.yml</code> 或者<code>application.properties</code> 用于存放所有环境通用的配置，指定激活的环境</p>
+</li>
+<li>
+<p><code>application-dev.yml</code>或者<code>application-dev.properties</code> 存放开发环境的特殊配置</p>
+</li>
+<li>
+<p><code>application-test.yml</code>或者<code>application-test.properties </code>存放测试环境的特殊配置</p>
+</li>
+<li>
+<p><code>application-prod.yml</code>或者<code>application-prod.properties </code>存放生产环境的特殊配置</p>
+<p><img src="../%E5%9B%BE%E7%89%87/image-20240623132335188.png" alt="image-20240623132335188"></p>
+<h2 id="多环境开发-Pofiles-分组">多环境开发 -Pofiles- 分组</h2>
+</li>
+</ul>
+<p><img src="../%E5%9B%BE%E7%89%87/image-20240623132458051.png" alt="image-20240623132458051"></p>
+<p>示例：</p>
+<figure class="highlight yml"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">profiles:</span></span><br><span class="line">    <span class="attr">active:</span> <span class="string">dev</span></span><br><span class="line">    <span class="attr">group:</span></span><br><span class="line">      <span class="attr">"dev":</span> <span class="string">devDB,devServer,devSelf</span></span><br><span class="line">      <span class="attr">"pro":</span> <span class="string">proDB,proServer,proSelf</span></span><br><span class="line">      <span class="attr">"test":</span> <span class="string">testDB,testServer,testself</span></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://qian421.github.io">顾</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://qian421.github.io/2024/06/03/%E5%AE%9E%E6%88%98%E7%AF%87/">http://qian421.github.io/2024/06/03/%E5%AE%9E%E6%88%98%E7%AF%87/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://qian421.github.io" target="_blank">青玉案</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://img1.baidu.com/it/u=1072047511,491707061&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=1422&amp;h=800" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2024/06/03/java%E5%9F%BA%E7%A1%80/" title="java基础"><img class="cover" src="https://img1.baidu.com/it/u=2774973768,213681575&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=800&amp;h=800" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">java基础</div></div></a></div><div class="next-post pull-right"><a href="/2024/06/03/%E9%BB%91%E9%A9%AC%E5%A4%A7%E4%BA%8B%E4%BB%B6%E5%89%8D%E7%AB%AF%E4%BB%A3%E7%A0%81/" title="黑马大事件前端代码"><img class="cover" src="https://img2.baidu.com/it/u=1530370139,2858963280&amp;fm=253&amp;fmt=auto&amp;app=120&amp;f=JPEG?w=800&amp;h=500" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">黑马大事件前端代码</div></div></a></div></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">顾</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/qian421" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:3063887847@QQ.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">Springboot后端实战篇</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E5%86%8C"><span class="toc-number">1.1.</span> <span class="toc-text">注册</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5Spring-Validation%E4%BE%9D%E8%B5%96"><span class="toc-number">1.1.1.</span> <span class="toc-text">引入Spring Validation依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5Md5Util%E5%B7%A5%E5%85%B7%E7%B1%BB"><span class="toc-number">1.1.2.</span> <span class="toc-text">导入Md5Util工具类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84"><span class="toc-number">1.1.3.</span> <span class="toc-text">三层架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E8%A6%81%E7%82%B9"><span class="toc-number">1.1.4.</span> <span class="toc-text">知识要点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Md5%E5%8A%A0%E5%AF%86"><span class="toc-number">1.1.4.1.</span> <span class="toc-text">Md5加密</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C"><span class="toc-number">1.1.4.2.</span> <span class="toc-text">参数校验</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%99%BB%E5%BD%95"><span class="toc-number">1.2.</span> <span class="toc-text">登录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5jwt%E4%BE%9D%E8%B5%96"><span class="toc-number">1.2.1.</span> <span class="toc-text">引入jwt依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E5%B7%A5%E5%85%B7%E7%B1%BBjwtUtil"><span class="toc-number">1.2.2.</span> <span class="toc-text">导入工具类jwtUtil</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E5%86%99UserController"><span class="toc-number">1.2.3.</span> <span class="toc-text">编写UserController</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%99%BB%E5%BD%95%E6%8B%A6%E6%88%AA%E5%99%A8"><span class="toc-number">1.2.4.</span> <span class="toc-text">登录拦截器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#LoginInterceptor"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">LoginInterceptor</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#WebConfig"><span class="toc-number">1.2.4.2.</span> <span class="toc-text">WebConfig</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E8%A6%81%E7%82%B9-2"><span class="toc-number">1.2.5.</span> <span class="toc-text">知识要点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#JWT"><span class="toc-number">1.2.5.1.</span> <span class="toc-text">JWT</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8B%A6%E6%88%AA%E5%99%A8"><span class="toc-number">1.2.5.2.</span> <span class="toc-text">拦截器</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E8%AF%A6%E7%BB%86%E4%BF%A1%E6%81%AF"><span class="toc-number">1.3.</span> <span class="toc-text">获取用户详细信息</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E5%86%99UserController-2"><span class="toc-number">1.3.1.</span> <span class="toc-text">编写UserController</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ThreadLocal"><span class="toc-number">1.3.2.</span> <span class="toc-text">ThreadLocal</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E7%94%A8%E6%88%B7%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="toc-number">1.4.</span> <span class="toc-text">更新用户基本信息</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84-2"><span class="toc-number">1.4.1.</span> <span class="toc-text">三层架构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#UserController"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">UserController</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#UserServiceImpl"><span class="toc-number">1.4.1.2.</span> <span class="toc-text">UserServiceImpl</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#UserMapper"><span class="toc-number">1.4.1.3.</span> <span class="toc-text">UserMapper</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C-2"><span class="toc-number">1.4.2.</span> <span class="toc-text">参数校验</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E7%94%A8%E6%88%B7%E5%A4%B4%E5%83%8F"><span class="toc-number">1.5.</span> <span class="toc-text">更新用户头像</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84-3"><span class="toc-number">1.5.1.</span> <span class="toc-text">三层架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E8%A6%81%E7%82%B9-3"><span class="toc-number">1.5.2.</span> <span class="toc-text">知识要点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C-3"><span class="toc-number">1.5.2.1.</span> <span class="toc-text">参数校验</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PatchMapping"><span class="toc-number">1.5.2.2.</span> <span class="toc-text">@PatchMapping</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81"><span class="toc-number">1.6.</span> <span class="toc-text">更新用户密码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84-4"><span class="toc-number">1.6.1.</span> <span class="toc-text">三层架构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E%E6%96%87%E7%AB%A0%E5%88%86%E7%B1%BB"><span class="toc-number">1.7.</span> <span class="toc-text">新增文章分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84-5"><span class="toc-number">1.7.1.</span> <span class="toc-text">三层架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E8%A6%81%E7%82%B9-4"><span class="toc-number">1.7.2.</span> <span class="toc-text">知识要点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E5%88%86%E7%B1%BB%E5%88%97%E8%A1%A8"><span class="toc-number">1.8.</span> <span class="toc-text">文章分类列表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84-6"><span class="toc-number">1.8.1.</span> <span class="toc-text">三层架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E8%A6%81%E7%82%B9-5"><span class="toc-number">1.8.2.</span> <span class="toc-text">知识要点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%96%87%E7%AB%A0%E5%88%86%E7%B1%BB%E8%AF%A6%E6%83%85"><span class="toc-number">1.9.</span> <span class="toc-text">获取文章分类详情</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84-7"><span class="toc-number">1.9.1.</span> <span class="toc-text">三层架构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E6%96%87%E7%AB%A0%E5%88%86%E7%B1%BB"><span class="toc-number">1.10.</span> <span class="toc-text">更新文章分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84-8"><span class="toc-number">1.10.1.</span> <span class="toc-text">三层架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E8%A6%81%E7%82%B9-6"><span class="toc-number">1.10.2.</span> <span class="toc-text">知识要点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C-4"><span class="toc-number">1.10.2.1.</span> <span class="toc-text">参数校验</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E7%BB%84%E6%A0%A1%E9%AA%8C"><span class="toc-number">1.10.2.2.</span> <span class="toc-text">分组校验</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%96%87%E7%AB%A0%E5%88%86%E7%B1%BB"><span class="toc-number">1.11.</span> <span class="toc-text">删除文章分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84-9"><span class="toc-number">1.11.1.</span> <span class="toc-text">三层架构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E5%A2%9E%E6%96%87%E7%AB%A0"><span class="toc-number">1.12.</span> <span class="toc-text">新增文章</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84-10"><span class="toc-number">1.12.1.</span> <span class="toc-text">三层架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E8%A6%81%E7%82%B9-7"><span class="toc-number">1.12.2.</span> <span class="toc-text">知识要点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C-5"><span class="toc-number">1.12.2.1.</span> <span class="toc-text">参数校验</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E5%88%97%E8%A1%A8-%E6%9D%A1%E4%BB%B6%E5%88%86%E9%A1%B5"><span class="toc-number">1.13.</span> <span class="toc-text">文章列表 ( 条件分页 )</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5pagehelper%E4%BE%9D%E8%B5%96"><span class="toc-number">1.13.1.</span> <span class="toc-text">引入pagehelper依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5PageBean%E5%AE%9E%E4%BD%93"><span class="toc-number">1.13.2.</span> <span class="toc-text">导入PageBean实体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84-11"><span class="toc-number">1.13.3.</span> <span class="toc-text">三层架构</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#ArticleController"><span class="toc-number">1.13.3.1.</span> <span class="toc-text">ArticleController</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9F%A5%E8%AF%86%E8%A6%81%E7%82%B9-8"><span class="toc-number">1.13.4.</span> <span class="toc-text">知识要点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#RequestParam"><span class="toc-number">1.13.4.1.</span> <span class="toc-text">@RequestParam</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E6%80%81SQL"><span class="toc-number">1.13.4.2.</span> <span class="toc-text">动态SQL</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%96%87%E7%AB%A0%E8%AF%A6%E6%83%85"><span class="toc-number">1.14.</span> <span class="toc-text">获取文章详情</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84-12"><span class="toc-number">1.14.1.</span> <span class="toc-text">三层架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C-6"><span class="toc-number">1.14.2.</span> <span class="toc-text">参数校验</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E6%96%87%E7%AB%A0"><span class="toc-number">1.15.</span> <span class="toc-text">更新文章</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84-13"><span class="toc-number">1.15.1.</span> <span class="toc-text">三层架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C-7"><span class="toc-number">1.15.2.</span> <span class="toc-text">参数校验</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E6%96%87%E7%AB%A0"><span class="toc-number">1.16.</span> <span class="toc-text">删除文章</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84-14"><span class="toc-number">1.16.1.</span> <span class="toc-text">三层架构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.17.</span> <span class="toc-text">文件上传</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E5%AD%98%E5%82%A8"><span class="toc-number">1.17.1.</span> <span class="toc-text">本地存储</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%98%BF%E9%87%8C%E4%BA%91-OSS"><span class="toc-number">1.17.2.</span> <span class="toc-text">阿里云 OSS</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.17.2.1.</span> <span class="toc-text">实现步骤</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%99%BB%E9%99%86%E4%BC%98%E5%8C%96-redis"><span class="toc-number">1.18.</span> <span class="toc-text">登陆优化-redis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SpringBoot-%E9%9B%86%E6%88%90-redis"><span class="toc-number">1.18.1.</span> <span class="toc-text">SpringBoot 集成 redis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A4%E7%89%8C%E4%B8%BB%E5%8A%A8%E5%A4%B1%E6%95%88%E6%9C%BA%E5%88%B6"><span class="toc-number">1.18.2.</span> <span class="toc-text">令牌主动失效机制</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringBoot-%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2"><span class="toc-number">1.19.</span> <span class="toc-text">SpringBoot 项目部署</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F"><span class="toc-number">1.20.</span> <span class="toc-text">属性配置方式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%96%B9%E5%BC%8F"><span class="toc-number">1.20.1.</span> <span class="toc-text">项目配置文件方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%8F%82%E6%95%B0%E6%96%B9%E5%BC%8F"><span class="toc-number">1.20.2.</span> <span class="toc-text">命令行参数方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E6%96%B9%E5%BC%8F"><span class="toc-number">1.20.3.</span> <span class="toc-text">环境变量方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%96%E9%83%A8%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E6%96%B9%E5%BC%8F"><span class="toc-number">1.20.4.</span> <span class="toc-text">外部配置文件方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-number">1.20.5.</span> <span class="toc-text">配置优先级</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E7%8E%AF%E5%A2%83%E5%BC%80%E5%8F%91-Profiles"><span class="toc-number">1.21.</span> <span class="toc-text">多环境开发-Profiles</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%8D%95%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="toc-number">1.21.1.</span> <span class="toc-text">1. 单文件配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%A4%9A%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="toc-number">1.21.2.</span> <span class="toc-text">2. 多文件配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E7%8E%AF%E5%A2%83%E5%BC%80%E5%8F%91-Pofiles-%E5%88%86%E7%BB%84"><span class="toc-number">1.22.</span> <span class="toc-text">多环境开发 -Pofiles- 分组</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2024/06/03/Mybatis%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" title="Mybatis快速入门"><img src="https://img1.baidu.com/it/u=2159572890,2532946480&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=1254&amp;h=703" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Mybatis快速入门"/></a><div class="content"><a class="title" href="/2024/06/03/Mybatis%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" title="Mybatis快速入门">Mybatis快速入门</a><time datetime="2024-06-03T00:54:10.000Z" title="发表于 2024-06-03 08:54:10">2024-06-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/03/SpringBoot/" title="SpringBoot"><img src="https://img2.baidu.com/it/u=3974344477,43929512&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=800&amp;h=500" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringBoot"/></a><div class="content"><a class="title" href="/2024/06/03/SpringBoot/" title="SpringBoot">SpringBoot</a><time datetime="2024-06-03T00:54:10.000Z" title="发表于 2024-06-03 08:54:10">2024-06-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/03/%E5%89%8D%E7%AB%AF%E5%AE%9E%E6%88%98%E7%AF%87/" title="前端实战篇"><img src="https://img2.baidu.com/it/u=1530370139,2858963280&amp;fm=253&amp;fmt=auto&amp;app=120&amp;f=JPEG?w=800&amp;h=500" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="前端实战篇"/></a><div class="content"><a class="title" href="/2024/06/03/%E5%89%8D%E7%AB%AF%E5%AE%9E%E6%88%98%E7%AF%87/" title="前端实战篇">前端实战篇</a><time datetime="2024-06-03T00:54:10.000Z" title="发表于 2024-06-03 08:54:10">2024-06-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/03/%E9%BB%91%E9%A9%AC%E5%9C%A8%E7%BA%BF%E8%81%8A%E5%A4%A9%E5%AE%A4(websocket)/" title="黑马在线聊天室(websocket)"><img src="https://img1.baidu.com/it/u=2774973768,213681575&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=800&amp;h=800" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="黑马在线聊天室(websocket)"/></a><div class="content"><a class="title" href="/2024/06/03/%E9%BB%91%E9%A9%AC%E5%9C%A8%E7%BA%BF%E8%81%8A%E5%A4%A9%E5%AE%A4(websocket)/" title="黑马在线聊天室(websocket)">黑马在线聊天室(websocket)</a><time datetime="2024-06-03T00:54:10.000Z" title="发表于 2024-06-03 08:54:10">2024-06-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2024/06/03/java%E5%9F%BA%E7%A1%80/" title="java基础"><img src="https://img1.baidu.com/it/u=2774973768,213681575&amp;fm=253&amp;fmt=auto&amp;app=138&amp;f=JPEG?w=800&amp;h=800" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="java基础"/></a><div class="content"><a class="title" href="/2024/06/03/java%E5%9F%BA%E7%A1%80/" title="java基础">java基础</a><time datetime="2024-06-03T00:54:10.000Z" title="发表于 2024-06-03 08:54:10">2024-06-03</time></div></div></div></div></div></div></main><footer id="footer" style="background: transparent"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2024 By 顾</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="chat-btn" type="button" title="聊天"><i class="fas fa-sms"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><div class="js-pjax"><script>(() => {
+  const initValine = () => {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'xuJtZjEn87pAx3T5gV0cps5y-gzGzoHsz',
+      appKey: '6EeZVbUJnuDZadkXwuI41Wnz',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      path: window.location.pathname,
+      visitor: false
+    }, null))
+  }
+
+  const loadValine = async () => {
+    if (typeof Valine === 'function') initValine()
+    else {
+      await getScript('https://cdn.jsdelivr.net/npm/valine@1.5.1/dist/Valine.min.js')
+      initValine()
+    }
+  }
+
+  if ('Valine' === 'Valine' || !false) {
+    if (false) btf.loadComment(document.getElementById('vcomment'),loadValine)
+    else setTimeout(loadValine, 0)
+  } else {
+    window.loadOtherComment = loadValine
+  }
+})()</script></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/click-heart.min.js" async="async" mobile="false"></script><script src="//code.tidio.co/lon7fnd7jlnhvg3j8jnq0xpobshclhfp.js" async="async"></script><script>(() => {
+  const isChatBtn = true
+  const isChatHideShow = true
+
+  if (isChatBtn) {
+    let isShow = false
+    const close = () => {
+      window.tidioChatApi.hide()
+      isShow = false
+    }
+    
+    const open = () => {
+      window.tidioChatApi.open()
+      window.tidioChatApi.show()
+      isShow = true
+    }
+
+    const onTidioChatApiReady = () => {
+      window.tidioChatApi.hide()
+      window.tidioChatApi.on("close", close)
+    }
+    if (window.tidioChatApi) {
+      window.tidioChatApi.on("ready", onTidioChatApiReady)
+    } else {
+      document.addEventListener("tidioChat-ready", onTidioChatApiReady)
+    }
+
+    window.chatBtnFn = () => {
+      if (!window.tidioChatApi) return
+      isShow ? close() : open()
+    }
+  } else if (isChatHideShow) {
+    window.chatBtn = {
+      hide: () => {
+        window.tidioChatApi && window.tidioChatApi.hide()
+      },
+      show: () => {
+        window.tidioChatApi && window.tidioChatApi.show()
+      }
+    }
+  }
+})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>
